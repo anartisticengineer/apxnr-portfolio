@@ -1,16 +1,17 @@
 <template>
-  <MainContainer msg="Welcome to Your Vue.js App" />
+  <MainContainer msg="Testing" />
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import MainContainer from "./components/MainContainer.vue";
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
     MainContainer,
   },
-};
+});
 </script>
 
 <style>
