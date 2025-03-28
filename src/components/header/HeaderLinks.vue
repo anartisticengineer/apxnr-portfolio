@@ -1,22 +1,41 @@
 <template>
   <div>
-    <ul>
-      <li v-for="(linkName, index) in linkNames" :key="index">
-        <a :href="`/${nameToURL(linkName)}`" target="_blank">{{ linkName }}</a>
-      </li>
-      <li @click="toggleSubLinks">Projects</li>
-    </ul>
-    <ul v-if="subLinksOpen">
-      <li v-for="(subLink, index) in projectSubLinks" :key="index">
-        <a href="" target="_blank">{{ subLink }}</a>
-      </li>
-    </ul>
+    <div id="primary-links">
+      <v-list horizontal class="d-flex">
+        <v-list-item
+          link
+          v-for="(linkName, index) in linkNames"
+          :key="index"
+          :href="nameToURL(linkName)"
+        >
+          <span class="text-uppercase">{{ linkName }}</span>
+        </v-list-item>
+        <v-list-item
+          ><v-btn block text @click="toggleSubLinks"
+            >Projects</v-btn
+          ></v-list-item
+        >
+      </v-list>
+    </div>
+    <project-sub-links
+      :subLinksOpen="subLinksOpen"
+      :projectSubLinks="projectSubLinks"
+    ></project-sub-links>
   </div>
 </template>
 
 <script>
+import { VList, VListItem, VBtn } from "vuetify/lib/components/index.mjs";
+import ProjectSubLinks from "./ProjectSubLinks.vue";
+
 export default {
   name: "HeaderLinks",
+  components: {
+    VList,
+    VListItem,
+    VBtn,
+    ProjectSubLinks,
+  },
   props: {
     linkNames: Array,
     projectsLink: String,

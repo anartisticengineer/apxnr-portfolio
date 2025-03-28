@@ -1,11 +1,18 @@
 <template>
-  <main>
+  <v-app>
+    <!-- header -->
     <HeaderContainer />
-    <h1>{{ msg }}</h1>
-  </main>
+    <!-- main content -->
+    <v-main>
+      <span>{{ msg }}</span>
+    </v-main>
+    <!-- footer -->
+  </v-app>
 </template>
 
 <script>
+import { VApp } from "vuetify/components/VApp";
+import { VMain } from "vuetify/components/VMain";
 import HeaderContainer from "./header/HeaderContainer.vue";
 
 export default {
@@ -15,6 +22,8 @@ export default {
   },
   components: {
     HeaderContainer,
+    VApp,
+    VMain,
   },
 };
 </script>
