@@ -1,19 +1,18 @@
 <template>
   <v-app>
     <!-- header -->
-    <HeaderContainer />
+    <header-container />
     <!-- main content -->
     <v-main>
-      <span>{{ msg }}</span>
+      <router-view />
     </v-main>
     <!-- footer -->
-    <FooterContainer />
+    <footer-container />
   </v-app>
 </template>
 
 <script>
-import { VApp } from "vuetify/components/VApp";
-import { VMain } from "vuetify/components/VMain";
+import { RouterView } from "vue-router";
 import HeaderContainer from "./header/HeaderContainer.vue";
 import FooterContainer from "./footer/FooterContainer.vue";
 
@@ -23,10 +22,9 @@ export default {
     msg: String,
   },
   components: {
+    RouterView,
     HeaderContainer,
     FooterContainer,
-    VApp,
-    VMain,
   },
 };
 </script>

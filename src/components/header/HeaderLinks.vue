@@ -2,13 +2,10 @@
   <div>
     <div id="primary-links">
       <v-list horizontal class="d-flex">
-        <v-list-item
-          link
-          v-for="(linkName, index) in linkNames"
-          :key="index"
-          :href="nameToURL(linkName)"
-        >
-          <span class="text-uppercase">{{ linkName }}</span>
+        <v-list-item link v-for="(linkName, index) in linkNames" :key="index">
+          <router-link :to="nameToURL(linkName)" class="text-uppercase">{{
+            linkName
+          }}</router-link>
         </v-list-item>
         <v-list-item
           ><v-btn block text @click="toggleSubLinks"
