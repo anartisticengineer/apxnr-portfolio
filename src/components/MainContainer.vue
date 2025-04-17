@@ -7,6 +7,7 @@
       <span>{{ msg }}</span>
     </v-main>
     <!-- footer -->
+    <FooterContainer />
   </v-app>
 </template>
 
@@ -14,6 +15,7 @@
 import { VApp } from "vuetify/components/VApp";
 import { VMain } from "vuetify/components/VMain";
 import HeaderContainer from "./header/HeaderContainer.vue";
+import FooterContainer from "./footer/FooterContainer.vue";
 
 export default {
   name: "MainContainer",
@@ -22,6 +24,7 @@ export default {
   },
   components: {
     HeaderContainer,
+    FooterContainer,
     VApp,
     VMain,
   },
