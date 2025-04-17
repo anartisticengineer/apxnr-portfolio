@@ -1,17 +1,11 @@
 <template>
   <div>
     <div id="primary-links">
-      <v-list horizontal class="d-flex">
+      <v-list horizontal class="d-flex text-uppercase">
         <v-list-item link v-for="(linkName, index) in linkNames" :key="index">
-          <router-link :to="nameToURL(linkName)" class="text-uppercase">{{
-            linkName
-          }}</router-link>
+          <router-link :to="nameToURL(linkName)">{{ linkName }}</router-link>
         </v-list-item>
-        <v-list-item
-          ><v-btn block text @click="toggleSubLinks"
-            >Projects</v-btn
-          ></v-list-item
-        >
+        <v-list-item @click="toggleSubLinks">Projects</v-list-item>
       </v-list>
     </div>
     <project-sub-links
@@ -22,15 +16,11 @@
 </template>
 
 <script>
-import { VList, VListItem, VBtn } from "vuetify/lib/components/index.mjs";
 import ProjectSubLinks from "./ProjectSubLinks.vue";
 
 export default {
   name: "HeaderLinks",
   components: {
-    VList,
-    VListItem,
-    VBtn,
     ProjectSubLinks,
   },
   props: {
