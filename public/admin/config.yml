@@ -1,0 +1,159 @@
+backend:
+  branch: main
+  commit_messages:
+    create: "Create {{ collection }}: {{ slug }}"
+    update: "Update {{ collection }}: {{ slug }}"
+    delete: "Delete {{ collection }}: {{ slug }}"
+    uploadMedia: "Upload {{ file }}"
+    deleteMedia: "Delete {{ file }}"
+publish_mode: editorial_workflow
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+site_url: "https://apxnr.com"
+collections:
+  - label: Pages
+    name: pages
+    files:
+      # Home Page
+      - label: "Home Page"
+        name: "home-page"
+        identifier_field: home
+        create: true
+        slug: home
+        file: "src/content/pages/home-page.{{extension}}"
+        preview_path: "content/home-page.{{extension}}"
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+          - label: "Call to Action"
+            name: "call-to-action"
+            widget: "object"
+            fields:
+              - {
+                  label: "Call to Action Subtitle",
+                  name: "call-to-action-text",
+                  widget: "string",
+                }
+              - {
+                  label: "Call to Action Button Text",
+                  name: "call-to-action-btn-text",
+                  widget: "string",
+                }
+              - {
+                  label: "Call to Action Goto Link",
+                  name: "call-to-action-goto-link",
+                  widget: "string",
+                }
+      # About Me Page
+      - label: About Me
+        name: about-me
+        identifier_field: about-me
+        create: true
+        slug: about-me
+        file: "src/content/pages/about-me.{{extension}}"
+        preview_path: "content/about-me.{{extension}}"
+        fields:
+          - label: "Profile Pic"
+            name: "profile-pic"
+            widget: "object"
+            fields:
+              - {
+                  label: "Profile Image",
+                  name: "profile-image",
+                  widget: "image",
+                }
+              - {
+                  label: "Profile Alt Text",
+                  name: "profile-alt-text",
+                  widget: "string",
+                }
+          - label: "Summary"
+            name: summary
+            widget: "markdown"
+      # Contact Page
+      - label: "Contact"
+        name: "contact"
+        identifier_field: contact
+        create: true
+        slug: contact
+        file: "src/content/pages/contact.{{extension}}"
+        preview_path: "content/contact.{{extension}}"
+        fields:
+          - label: "Message"
+            name: "message"
+            widget: "markdown"
+      # Gallery Pages
+      - label: "Gallery"
+        name: "gallery"
+        identifier_field: gallery
+        create: true
+        slug: gallery
+        file: "src/content/pages/gallery.{{extension}}"
+        preview_path: "content/gallery.{{extension}}"
+        fields:
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - {
+                  label: "Description",
+                  name: "description",
+                  widget: "markdown",
+                  required: false,
+                }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                fields:
+                  - {
+                      label: "Image",
+                      name: "image",
+                      widget: "image",
+                      allow_multiple: false,
+                    }
+                  - {
+                      label: "Alt Text",
+                      name: "alt-text",
+                      widget: "string",
+                      required: false,
+                    }
+  # ~~~~~~~~Components~~~~~~~
+  - label: Components
+    name: components
+    files:
+      # Header
+      - label: "Header"
+        name: "header"
+        create: true
+        slug: header
+        file: "src/content/components/header.{{extension}}"
+        preview_path: "content/header.{{extension}}"
+        fields:
+          # Home Image/Logo
+          - label: "Home Image"
+            name: "home-image"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt-text", widget: "string" }
+      # Footer
+      - label: "Footer"
+        name: "footer"
+        create: true
+        slug: footer
+        file: "src/content/components/footer.{{extension}}"
+        preview_path: "content/footer.{{extension}}"
+        fields:
+          - label: "Socials"
+            name: "socials"
+            widget: "list"
+            fields:
+              - { label: "Site name", name: "site-name", widget: "string" }
+              - {
+                  label: "Site link",
+                  name: "site-link",
+                  widget: "string",
+                  pattern: ["^https:\/\/", "Must be a valid URL"],
+                }
