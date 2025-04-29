@@ -1,8 +1,13 @@
-import { HandlerEvent } from "@netlify/functions";
+import { HandlerEvent, HandlerResponse } from "@netlify/functions";
 
 const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
 
-exports.handler = async function (event: HandlerEvent) {
+const RESPONSE_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "application/json",
+};
+
+exports.handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
   try {
     const authHeader = event.headers.authorization || "";
     const authToken = authHeader.replace("Bearer ", "");
@@ -11,6 +16,7 @@ exports.handler = async function (event: HandlerEvent) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: "Unauthorized" }),
+        headers: RESPONSE_HEADERS,
       };
     }
     //2
@@ -31,6 +37,7 @@ exports.handler = async function (event: HandlerEvent) {
       return {
         statusCode: 403,
         body: JSON.stringify({ error: "Unauthorized user" }),
+        headers: RESPONSE_HEADERS,
       };
     }
     //4
@@ -42,12 +49,14 @@ exports.handler = async function (event: HandlerEvent) {
     return {
       statusCode: 200,
       body: JSON.stringify({ token: githubToken }),
+      headers: RESPONSE_HEADERS,
     };
   } catch (err) {
     console.error("Auth error", err);
     return {
       statusCode: 401,
       body: JSON.stringify({ error: "Unauthorized" }),
+      headers: RESPONSE_HEADERS,
     };
   }
 };
