@@ -3,7 +3,8 @@ import { HandlerEvent, HandlerResponse } from "@netlify/functions";
 const AUTH0_DOMAIN = process.env.AUTH0_DOMAIN;
 
 const RESPONSE_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "https://apxnr.netlify.app",
+  "Access-Control-Allow-Headers": "Authorization",
   "Content-Type": "application/json",
 };
 
