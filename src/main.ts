@@ -5,8 +5,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
-import { fa } from "vuetify/lib/iconsets/fa.mjs";
-import { aliases, mdi } from "vuetify/lib/iconsets/mdi.mjs";
+import { fa } from "vuetify/iconsets/fa";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
