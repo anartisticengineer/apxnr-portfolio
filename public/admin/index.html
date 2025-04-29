@@ -9,5 +9,20 @@
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <script type="module">
+      import { createAuthProvider } from "https://cdn.jsdelivr.net/npm/netlify-cms-lib-auth@latest/dist/netlify-cms-lib-auth.esm.js";
+
+      window.CMS.registerBackend(
+        "github",
+        createAuthProvider({
+          auth_url: "https://dev-jjzahyhd8t1kns3j.us.auth0.com/authorize",
+          app_id: "upf2C7QicpMmrGRuB1yPPQ0knbDq22fd",
+          auth_origin: "https://apxnr.netlify.app/admin/",
+          auth_type: "pkce",
+          scope: "openid profile email",
+        })
+      );
+    </script>
   </body>
 </html>
