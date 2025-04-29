@@ -12,7 +12,7 @@ publish_mode: editorial_workflow
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 site_url: "https://apxnr.netlify.app"
-auth_endpoint: "https://apxnr.netlify.app/.netlify/functions/auth"
+auth_endpoint: "/.netlify/functions/auth"
 collections:
   - label: Pages
     name: pages
