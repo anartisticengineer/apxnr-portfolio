@@ -2,6 +2,7 @@ backend:
   branch: main
   name: github
   repo: anartisticengineer/apxnr-portfolio
+  auth_endpoint: "/.netlify/functions/auth"
   commit_messages:
     create: "Create {{ collection }}: {{ slug }}"
     update: "Update {{ collection }}: {{ slug }}"
@@ -12,7 +13,6 @@ publish_mode: editorial_workflow
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 site_url: "https://apxnr.netlify.app"
-auth_endpoint: "/.netlify/functions/auth"
 collections:
   - label: Pages
     name: pages
