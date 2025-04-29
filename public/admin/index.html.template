@@ -11,13 +11,13 @@
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
     <script type="module">
-      import { createAuthProvider } from "https://cdn.jsdelivr.net/npm/netlify-cms-lib-auth@latest/dist/netlify-cms-lib-auth.esm.js";
+      import { createAuthProvider } from "https://cdn.jsdelivr.net/npm/netlify-cms-lib-auth@2.4.5/dist/netlify-cms-lib-auth.esm.js";
 
       window.CMS.registerBackend(
         "github",
         createAuthProvider({
-          auth_url: `https://${process.env.AUTH0_DOMAIN}/authorize`,
-          app_id: process.env.AUTH0_CLIENT_ID,
+          auth_url: `https://${AUTH0_DOMAIN}/authorize`,
+          app_id: AUTH0_CLIENT_ID,
           auth_origin: "https://apxnr.netlify.app/admin/",
           auth_type: "pkce",
           scope: "openid profile email",

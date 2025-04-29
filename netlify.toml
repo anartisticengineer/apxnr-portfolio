@@ -1,0 +1,3 @@
+[build]
+    publish = "public"
+    command = "cp public/admin/index.html.template public/admin/index.html"
