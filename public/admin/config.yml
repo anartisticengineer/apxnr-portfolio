@@ -2,7 +2,7 @@ backend:
   branch: main
   name: github
   repo: anartisticengineer/apxnr-portfolio
-  auth_endpoint: "/.netlify/functions/auth"
+  base_url: "https://sveltia-cms-auth.justinanthonyjohnson1995.workers.dev"
   commit_messages:
     create: "Create {{ collection }}: {{ slug }}"
     update: "Update {{ collection }}: {{ slug }}"
