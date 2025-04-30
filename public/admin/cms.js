@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
   script.onload = () => {
     window.CMS.registerBackend(
       "github",
-      NetlifyCmsLibAuth.createAuthProvider({
+      DecapCmsLibAuth.createAuthProvider({
         auth_url: `https://${AUTH0_DOMAIN}/authorize`,
         app_id: `${AUTH0_CLIENT_ID}`,
         auth_origin: "https://apxnr.netlify.app/admin/",
