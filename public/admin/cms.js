@@ -2,7 +2,7 @@
 window.addEventListener("load", () => {
   const script = document.createElement("script");
   script.src =
-    "https://cdn.jsdelivr.net/npm/netlify-cms-lib-auth@2.4.2/dist/netlify-cms-lib-auth.js";
+    "https://cdn.jsdelivr.net/npm/decap-cms-lib-auth@3.0.5/dist/decap-cms-lib-auth.js";
   script.onload = () => {
     window.CMS.registerBackend(
       "github",
