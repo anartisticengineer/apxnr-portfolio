@@ -4,11 +4,11 @@ backend:
   repo: anartisticengineer/apxnr-portfolio
   base_url: "https://sveltia-cms-auth.justinanthonyjohnson1995.workers.dev"
   commit_messages:
-    create: "Create {{ collection }}: {{ slug }}"
-    update: "Update {{ collection }}: {{ slug }}"
-    delete: "Delete {{ collection }}: {{ slug }}"
-    uploadMedia: "Upload {{ file }}"
-    deleteMedia: "Delete {{ file }}"
+    create: "Create"
+    update: "Update"
+    delete: "Delete"
+    uploadMedia: "Upload"
+    deleteMedia: "Delete"
 publish_mode: editorial_workflow
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -19,12 +19,10 @@ collections:
     files:
       # Home Page
       - label: "Home Page"
-        name: "home-page"
-        identifier_field: home
+        name: "homepage"
         create: true
-        slug: home
-        file: "src/content/pages/home-page.{{extension}}"
-        preview_path: "content/home-page.{{extension}}"
+        extension: "json"
+        file: "src/content/pages/homepage.json"
         fields:
           - label: "Title"
             name: "title"
@@ -49,13 +47,11 @@ collections:
                   widget: "string",
                 }
       # About Me Page
-      - label: About Me
-        name: about-me
-        identifier_field: about-me
+      - label: "About Me"
+        name: "about-me"
         create: true
-        slug: about-me
-        file: "src/content/pages/about-me.{{extension}}"
-        preview_path: "content/about-me.{{extension}}"
+        extension: "json"
+        file: "src/content/pages/about-me.json"
         fields:
           - label: "Profile Pic"
             name: "profile-pic"
@@ -77,11 +73,9 @@ collections:
       # Contact Page
       - label: "Contact"
         name: "contact"
-        identifier_field: contact
         create: true
-        slug: contact
-        file: "src/content/pages/contact.{{extension}}"
-        preview_path: "content/contact.{{extension}}"
+        extension: "json"
+        file: "src/content/pages/contact.json"
         fields:
           - label: "Message"
             name: "message"
@@ -89,11 +83,9 @@ collections:
       # Gallery Pages
       - label: "Gallery"
         name: "gallery"
-        identifier_field: gallery
         create: true
-        slug: gallery
-        file: "src/content/pages/gallery.{{extension}}"
-        preview_path: "content/gallery.{{extension}}"
+        extension: "json"
+        file: "src/content/pages/gallery.json"
         fields:
           - label: "Projects"
             name: "projects"
@@ -130,9 +122,8 @@ collections:
       - label: "Header"
         name: "header"
         create: true
-        slug: header
-        file: "src/content/components/header.{{extension}}"
-        preview_path: "content/header.{{extension}}"
+        extension: "json"
+        file: "src/content/components/header.json"
         fields:
           # Home Image/Logo
           - label: "Home Image"
@@ -145,9 +136,8 @@ collections:
       - label: "Footer"
         name: "footer"
         create: true
-        slug: footer
-        file: "src/content/components/footer.{{extension}}"
-        preview_path: "content/footer.{{extension}}"
+        extension: "json"
+        file: "src/content/components/footer.json"
         fields:
           - label: "Socials"
             name: "socials"
