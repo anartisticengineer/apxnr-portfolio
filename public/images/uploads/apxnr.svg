@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46667 135.46667"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   sodipodi:docname="apxnr.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title26142">APXNR Logo</title>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.55055827"
+     inkscape:cx="-220.68509"
+     inkscape:cy="-5.4490145"
+     inkscape:window-width="1312"
+     inkscape:window-height="784"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer2">
+    <inkscape:grid
+       type="xygrid"
+       id="grid8834" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <rect
+       x="178.56228"
+       y="229.58007"
+       width="718.80427"
+       height="488.31317"
+       id="rect2696" />
+    <filter
+       inkscape:label="Bright Metal"
+       inkscape:menu="Bevels"
+       inkscape:menu-tooltip="Bright metallic effect for any color"
+       style="color-interpolation-filters:sRGB;"
+       id="filter23943"
+       x="-0.38457189"
+       y="-1.8512018"
+       width="1.7691438"
+       height="4.7024037">
+      <feColorMatrix
+         result="result2"
+         type="luminanceToAlpha"
+         in="SourceGraphic"
+         id="feColorMatrix23933" />
+      <feDiffuseLighting
+         lighting-color="#ffffff"
+         in="result2"
+         diffuseConstant="0.5"
+         result="result1"
+         surfaceScale="15"
+         id="feDiffuseLighting23937">
+        <feDistantLight
+           azimuth="225"
+           elevation="10"
+           id="feDistantLight23935" />
+      </feDiffuseLighting>
+      <feComposite
+         result="result9"
+         operator="arithmetic"
+         k2="1"
+         k3="0.8"
+         in2="SourceGraphic"
+         id="feComposite23939" />
+      <feComposite
+         in2="SourceGraphic"
+         result="fbSourceGraphic"
+         operator="in"
+         in="result9"
+         id="feComposite23941" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix24315" />
+      <feGaussianBlur
+         id="feGaussianBlur24317"
+         result="result6"
+         stdDeviation="8"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite24319"
+         in="result6"
+         operator="xor"
+         result="result10" />
+      <feGaussianBlur
+         id="feGaussianBlur24321"
+         result="result2"
+         stdDeviation="8" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite24323"
+         operator="atop"
+         in="result10"
+         result="result91" />
+      <feComposite
+         in2="result91"
+         id="feComposite24325"
+         result="result4"
+         in="result2"
+         operator="xor" />
+      <feGaussianBlur
+         id="feGaussianBlur24327"
+         in="result4"
+         result="result3"
+         stdDeviation="4" />
+      <feSpecularLighting
+         id="feSpecularLighting24329"
+         result="result5"
+         specularExponent="5"
+         specularConstant="1.1"
+         surfaceScale="18">
+        <feDistantLight
+           id="feDistantLight24331"
+           azimuth="235"
+           elevation="55" />
+      </feSpecularLighting>
+      <feComposite
+         in2="result5"
+         id="feComposite24333"
+         in="result3"
+         k3="1.1"
+         k2="0.5"
+         operator="arithmetic"
+         result="result7"
+         k1="0.5" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite24335"
+         in="result7"
+         operator="atop"
+         result="result8" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     sodipodi:insensitive="true" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="X"
+     sodipodi:insensitive="true">
+    <g
+       id="g23315"
+       style="filter:url(#filter23943)">
+      <g
+         id="g8832"
+         style="display:inline">
+        <g
+           aria-label="APXNR"
+           transform="matrix(0.26458334,0,0,0.26458334,-74.627177,-14.440925)"
+           id="text2694"
+           style="font-size:133.333px;line-height:1.25;font-family:'Hiragino Maru Gothic ProN';-inkscape-font-specification:'Hiragino Maru Gothic ProN';text-align:center;text-anchor:middle;white-space:pre;shape-inside:url(#rect2696);fill:#ffffff">
+          <path
+             d="m 328.98621,325.71317 h 37.19991 l 5.59998,16.79995 c 1.06667,3.33333 1.6,5.99999 1.6,7.59998 0,3.86666 -2.8,5.46666 -9.59998,5.73332 v 3.33333 h 34.39991 v -3.33333 c -7.73331,-0.26666 -10.26664,-2.79999 -13.99996,-13.7333 L 355.91948,261.58 l -8.26665,0.93333 -28.39993,75.19981 c -5.06665,13.46663 -9.46664,18.13328 -17.06662,18.13328 v 3.33333 h 31.19992 v -3.33333 c -7.73331,-0.26666 -11.19997,-2.39999 -11.19997,-7.19998 0,-2.53333 0.93333,-6.66665 2.53333,-10.9333 z m 35.46658,-4.93332 h -33.59992 l 17.33329,-46.66655 z"
+             style="font-family:'Hiragino Mincho ProN';-inkscape-font-specification:'Hiragino Mincho ProN'"
+             id="path8836" />
+          <path
+             d="m 426.62346,317.31319 h 8.66665 c 10.26664,0 19.99994,-1.2 25.4666,-3.19999 10.9333,-3.86666 16.13329,-11.99997 16.13329,-24.79994 0,-11.33331 -4.39999,-19.06662 -13.19997,-23.19994 -4.93332,-2.26666 -12.9333,-3.59999 -22.53327,-3.59999 h -36.66658 v 3.19999 c 9.59998,0.4 10.26665,1.33333 10.26665,13.7333 v 62.79984 c 0,12.39997 -0.8,13.3333 -10.26665,13.59996 v 3.33333 h 33.33325 v -3.33333 c -10.39997,-0.26666 -11.19997,-1.33333 -11.19997,-13.59996 z m 0,-3.99999 v -46.79988 h 11.99997 c 16.93329,0 25.33327,7.73331 25.33327,23.33327 0,7.86665 -2.26666,14.26663 -6.13332,17.86662 -4.13332,3.73333 -11.3333,5.59999 -21.73328,5.59999 z"
+             style="font-family:'Hiragino Mincho ProN';-inkscape-font-specification:'Hiragino Mincho ProN'"
+             id="path8838" />
+          <path
+             d="m 516.24823,279.44662 c -3.86666,-5.73332 -4.79999,-7.73332 -4.79999,-9.59998 0,-2.66666 2.39999,-3.86665 8.39998,-4.13332 v -3.19999 h -34.66658 v 3.19999 c 6.39998,0.53333 10.42117,3.45233 15.73329,11.3333 l 44.66655,66.2665 c 3.2,4.93332 4.13333,6.66665 4.13333,8.26665 0,3.19999 -2.26666,4.26665 -8.66665,4.26665 v 3.33333 h 40.62698 v -3.33333 c -7.19998,-0.66666 -15.82704,-3.33332 -22.09369,-12.5333 z"
+             style="font-family:'Hiragino Mincho ProN';-inkscape-font-specification:'Hiragino Mincho ProN'"
+             id="path8840"
+             sodipodi:nodetypes="csccccscscccccc" />
+          <path
+             d="m 599.40843,272.24664 60.66651,87.33311 h 7.59998 v -73.99982 c 0,-15.73329 2.13333,-19.33328 12.13331,-19.86661 v -3.19999 h -29.73326 v 3.19999 c 5.46665,0.26667 8.39998,1.33333 10.13331,3.73332 1.59999,2.13333 1.99999,5.99999 1.99999,17.99996 v 54.79986 l -55.59986,-79.73313 h -23.59994 v 3.19999 c 9.99998,0.4 10.93331,1.73333 10.93331,14.79996 v 53.7332 c 0,10.26664 -0.8,15.46662 -2.66666,17.99995 -1.73333,2.53333 -4.53332,3.59999 -9.59998,3.59999 v 3.33333 h 29.33326 v -3.33333 c -5.33332,-0.13333 -8.13331,-1.19999 -9.73331,-3.59999 -1.46666,-2.13333 -1.86666,-5.06665 -1.86666,-15.73329 z"
+             style="font-family:'Hiragino Mincho ProN';-inkscape-font-specification:'Hiragino Mincho ProN'"
+             id="path8842" />
+          <path
+             d="m 711.25814,313.3132 h 8.13332 c 3.33332,0 6.66665,0.53333 9.46664,1.59999 3.99999,1.33333 6.53331,3.99999 9.73331,9.73331 3.73332,6.53332 9.33331,19.99995 14.53329,34.53325 h 20.79995 v -2.93333 c -3.19999,-0.13333 -5.06665,-0.8 -7.06665,-2.53333 -2.66666,-2.26666 -3.73332,-4.13332 -10.26664,-18.93328 -4.39999,-9.86664 -6.93331,-13.86663 -11.06664,-17.46662 -3.06666,-2.53333 -6.13332,-3.86666 -10.66664,-4.79999 v -1.2 c 9.99998,-1.06666 18.39996,-4.66665 22.39995,-9.86664 2.79999,-3.73332 4.53332,-9.33331 4.53332,-15.06663 0,-16.26662 -11.33331,-23.8666 -35.73324,-23.8666 h -36.93324 v 3.19999 c 9.59997,0.4 10.26664,1.33333 10.26664,13.7333 v 62.79984 c 0,12.26663 -0.8,13.3333 -10.26664,13.59996 v 3.33333 h 32.53325 v -3.33333 c -9.59998,-0.26666 -10.39998,-1.33333 -10.39998,-13.59996 z m 0,-3.99999 v -42.79989 h 12.26664 c 17.06662,0 25.33327,6.79998 25.33327,20.79994 0,8.13332 -2.8,14.26663 -8.13332,17.86662 -3.86665,2.66666 -10.39997,4.13333 -18.39995,4.13333 z"
+             style="font-family:'Hiragino Mincho ProN';-inkscape-font-specification:'Hiragino Mincho ProN'"
+             id="path8844" />
+        </g>
+      </g>
+      <g
+         aria-label="X"
+         id="text19756"
+         style="font-size:35.2778px;line-height:1.25;font-family:'Hiragino Mincho ProN';-inkscape-font-specification:'Hiragino Mincho ProN';fill:#ececec;stroke-width:0.264583">
+        <path
+           d="m 71.833374,60.506211 c 1.164167,-1.622778 2.451807,-3.280835 3.369029,-4.021669 0.917223,-0.705556 3.26058,-0.481038 4.424748,-0.622149 v -0.846664 l -10.333779,0.09298 v 0.846667 c 1.940279,0.105833 2.875141,-0.105833 2.875141,0.740834 0,0.564445 -0.61934,2.059913 -1.393473,3.069169 0,0 -7.301104,11.53902 -12.311953,16.051399 -1.50588,1.356078 -3.256754,2.549067 -5.183749,3.176213 -2.30845,0.751292 -4.835781,0.44738 -7.25985,0.578809 -1.600273,0.08676 -3.838001,0.13048 -4.80588,0.138309 v 0.881945 l 20.318648,0.09306 v -0.881945 c -1.834446,-0.03528 -2.681113,-0.458612 -2.681113,-1.305279 0,-0.670278 0.3175,-1.375834 1.411112,-2.89278 z"
+           id="path21906"
+           sodipodi:nodetypes="ccccccssaaaccccscc"
+           style="fill:#ffffff" />
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata26140">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+        <dc:title>APXNR Logo</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Justin Johnson</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
