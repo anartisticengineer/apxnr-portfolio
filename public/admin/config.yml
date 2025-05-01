@@ -4,25 +4,35 @@ backend:
   repo: anartisticengineer/apxnr-portfolio
   base_url: "https://sveltia-cms-auth.justinanthonyjohnson1995.workers.dev"
   commit_messages:
-    create: "Create"
-    update: "Update"
-    delete: "Delete"
-    uploadMedia: "Upload"
-    deleteMedia: "Delete"
+    create: "Create New Entry: {{slug}}"
+    update: "Update Entry: {{slug}}"
+    delete: "Delete Entry: {{slug}}"
+    uploadMedia: "Upload Media: {{path}}"
+    deleteMedia: "Delete Media: {{path}}"
 publish_mode: editorial_workflow
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 site_url: "https://apxnr.netlify.app"
+# Image Optimizations
+media_libraries:
+  default:
+    config:
+      transformations:
+        raster_image: # original format
+          format: webp # new format, only `webp` is supported
+          quality: 85 # default: 85
+        svg:
+          optimize: true
 collections:
-  - label: Pages
-    name: pages
+  # ~~~~~~~~Pages~~~~~~~
+  - label: "Pages"
+    name: "pages"
     files:
       # Home Page
       - label: "Home Page"
         name: "homepage"
-        create: true
-        extension: "json"
         file: "src/content/pages/homepage.json"
+        create: true
         fields:
           - label: "Title"
             name: "title"
@@ -49,9 +59,8 @@ collections:
       # About Me Page
       - label: "About Me"
         name: "about-me"
-        create: true
-        extension: "json"
         file: "src/content/pages/about-me.json"
+        create: true
         fields:
           - label: "Profile Pic"
             name: "profile-pic"
@@ -73,71 +82,61 @@ collections:
       # Contact Page
       - label: "Contact"
         name: "contact"
-        create: true
-        extension: "json"
         file: "src/content/pages/contact.json"
+        create: true
         fields:
           - label: "Message"
             name: "message"
             widget: "markdown"
-      # Gallery Pages
-      - label: "Gallery"
-        name: "gallery"
-        create: true
-        extension: "json"
-        file: "src/content/pages/gallery.json"
+  # ~~~~~~~~Gallery~~~~~~~
+  - label: "Gallery"
+    name: "gallery"
+    folder: "src/content/gallery"
+    slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
+    create: true
+    extension: "json"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "markdown",
+          required: false,
+        }
+      - label: "Images"
+        name: "images"
+        widget: "list"
         fields:
-          - label: "Projects"
-            name: "projects"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - {
-                  label: "Description",
-                  name: "description",
-                  widget: "markdown",
-                  required: false,
-                }
-              - label: "Images"
-                name: "images"
-                widget: "list"
-                fields:
-                  - {
-                      label: "Image",
-                      name: "image",
-                      widget: "image",
-                      allow_multiple: false,
-                    }
-                  - {
-                      label: "Alt Text",
-                      name: "alt-text",
-                      widget: "string",
-                      required: false,
-                    }
+          - {
+              label: "Image",
+              name: "image",
+              widget: "image",
+              allow_multiple: false,
+            }
+          - {
+              label: "Alt Text",
+              name: "alt-text",
+              widget: "string",
+              required: false,
+            }
   # ~~~~~~~~Components~~~~~~~
-  - label: Components
-    name: components
+  - label: "Components"
+    name: "components"
     files:
       # Header
       - label: "Header"
         name: "header"
-        create: true
-        extension: "json"
         file: "src/content/components/header.json"
+        create: true
         fields:
           # Home Image/Logo
-          - label: "Home Image"
-            name: "home-image"
-            widget: "object"
-            fields:
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Alt Text", name: "alt-text", widget: "string" }
+          - { label: "Home Logo", name: "home-logo", widget: "image" }
+          - { label: "Alt Text", name: "alt-text", widget: "string" }
       # Footer
       - label: "Footer"
         name: "footer"
-        create: true
-        extension: "json"
         file: "src/content/components/footer.json"
+        create: true
         fields:
           - label: "Socials"
             name: "socials"
