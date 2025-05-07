@@ -13,6 +13,7 @@ publish_mode: editorial_workflow
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 site_url: "https://apxnr.netlify.app"
+display_url: "https://apxnr.netlify.app"
 # Image Optimizations
 media_libraries:
   default:
@@ -25,76 +26,74 @@ media_libraries:
           optimize: true
 collections:
   # ~~~~~~~~Pages~~~~~~~
-  - label: "Pages"
-    name: "pages"
-    files:
-      # Home Page
-      - label: "Home Page"
-        name: "homepage"
-        file: "src/content/pages/homepage.json"
-        create: true
+  # Home Page
+  - label: "Home Pages"
+    name: "homepages"
+    format: "json"
+    folder: "src/content/pages/homepages"
+    slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Call to Action"
+        name: "call-to-action"
+        widget: "object"
         fields:
-          - label: "Title"
-            name: "title"
-            widget: "string"
-          - label: "Call to Action"
-            name: "call-to-action"
-            widget: "object"
-            fields:
-              - {
-                  label: "Call to Action Subtitle",
-                  name: "call-to-action-text",
-                  widget: "string",
-                }
-              - {
-                  label: "Call to Action Button Text",
-                  name: "call-to-action-btn-text",
-                  widget: "string",
-                }
-              - {
-                  label: "Call to Action Goto Link",
-                  name: "call-to-action-goto-link",
-                  widget: "string",
-                }
-      # About Me Page
-      - label: "About Me"
-        name: "about-me"
-        file: "src/content/pages/about-me.json"
-        create: true
+          - {
+              label: "Call to Action Subtitle",
+              name: "call-to-action-text",
+              widget: "string",
+            }
+          - {
+              label: "Call to Action Button Text",
+              name: "call-to-action-btn-text",
+              widget: "string",
+            }
+          - {
+              label: "Call to Action Goto Link",
+              name: "call-to-action-goto-link",
+              widget: "string",
+            }
+  # About Me Page
+  - label: "About Me"
+    name: "about-me"
+    format: "json"
+    folder: "src/content/pages/about-me"
+    slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
+    create: true
+    fields:
+      - label: "Profile Pic"
+        name: "profile-pic"
+        widget: "object"
         fields:
-          - label: "Profile Pic"
-            name: "profile-pic"
-            widget: "object"
-            fields:
-              - {
-                  label: "Profile Image",
-                  name: "profile-image",
-                  widget: "image",
-                }
-              - {
-                  label: "Profile Alt Text",
-                  name: "profile-alt-text",
-                  widget: "string",
-                }
-          - label: "Summary"
-            name: summary
-            widget: "markdown"
-      # Contact Page
-      - label: "Contact"
-        name: "contact"
-        file: "src/content/pages/contact.json"
-        create: true
-        fields:
-          - label: "Message"
-            name: "message"
-            widget: "markdown"
+          - { label: "Profile Image", name: "profile-image", widget: "image" }
+          - {
+              label: "Profile Alt Text",
+              name: "profile-alt-text",
+              widget: "string",
+            }
+      - label: "Summary"
+        name: summary
+        widget: "markdown"
+  # Contact Page
+  - label: "Contact"
+    name: "contact"
+    format: "json"
+    folder: "src/content/pages/contact"
+    slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
+    create: true
+    fields:
+      - label: "Message"
+        name: "message"
+        widget: "markdown"
   # ~~~~~~~~Gallery~~~~~~~
   - label: "Gallery"
     name: "gallery"
     folder: "src/content/gallery"
     slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
     create: true
-    extension: "json"
+    format: "json"
+    idenitfier_field: "title"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -120,32 +119,30 @@ collections:
               required: false,
             }
   # ~~~~~~~~Components~~~~~~~
-  - label: "Components"
-    name: "components"
-    files:
-      # Header
-      - label: "Header"
-        name: "header"
-        file: "src/content/components/header.json"
-        create: true
+  - label: "Header"
+    name: "header"
+    format: "json"
+    folder: "src/content/components/header"
+    slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
+    create: true
+    fields:
+      - { label: "Home Logo", name: "home-logo", widget: "image" }
+      - { label: "Alt Text", name: "alt-text", widget: "string" }
+  - label: "Footer"
+    name: "footer"
+    format: "json"
+    folder: "src/content/components/footer"
+    slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
+    create: true
+    fields:
+      - label: "Socials"
+        name: "socials"
+        widget: "list"
         fields:
-          # Home Image/Logo
-          - { label: "Home Logo", name: "home-logo", widget: "image" }
-          - { label: "Alt Text", name: "alt-text", widget: "string" }
-      # Footer
-      - label: "Footer"
-        name: "footer"
-        file: "src/content/components/footer.json"
-        create: true
-        fields:
-          - label: "Socials"
-            name: "socials"
-            widget: "list"
-            fields:
-              - { label: "Site name", name: "site-name", widget: "string" }
-              - {
-                  label: "Site link",
-                  name: "site-link",
-                  widget: "string",
-                  pattern: ["^https:\/\/", "Must be a valid URL"],
-                }
+          - { label: "Site name", name: "site-name", widget: "string" }
+          - {
+              label: "Site link",
+              name: "site-link",
+              widget: "string",
+              pattern: ["^https:\/\/", "Must be a valid URL"],
+            }
