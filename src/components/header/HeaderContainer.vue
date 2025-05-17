@@ -1,22 +1,31 @@
 <template>
-  <v-app-bar height="auto">
-    <header-links
-      :link-names="['Home', 'About Me', 'Contact']"
-      :projects-link="Projects"
-      :project-sub-links="['Project 1', 'Project 2', 'Project 3']"
+  <v-app-bar color="background" class="d-flex">
+    <!-- logo -->
+    <v-img
+      :src="headerContent['home-logo']"
+      :alt="headerContent['alt-text']"
+      max-width="10%"
     />
+    <!-- header links -->
+    <header-links :link-names="['About Me', 'Contact']" />
+    <!-- projects links -->
+    <project-sub-links :project-names="['Project 1', 'Project 2']" />
   </v-app-bar>
 </template>
 
 <script>
-// import { VAppBar } from "vuetify/lib/components/index.mjs";
 import HeaderLinks from "./HeaderLinks.vue";
+import headerContent from "../../content/components/header/998c75e6d2ab_2025-05-07.json";
+import ProjectSubLinks from "./ProjectSubLinks.vue";
 
 export default {
   name: "HeaderContainer",
   components: {
     HeaderLinks,
-    // VAppBar,
+    ProjectSubLinks,
+  },
+  created() {
+    this.headerContent = headerContent;
   },
 };
 </script>

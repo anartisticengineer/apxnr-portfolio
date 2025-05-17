@@ -30,6 +30,11 @@ const vuetify = createVuetify({
   },
   theme: {
     defaultTheme: "myCustomTheme",
+    variations: {
+      colors: ["background"],
+      lighten: 2,
+      darken: 2,
+    },
     themes: {
       myCustomTheme: {
         colors: {

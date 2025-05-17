@@ -1,16 +1,27 @@
 <template>
-  <div id="project-sub-links">
-    <v-list v-if="subLinksOpen" horizontal class="d-flex">
+  <v-list horizontal class="d-flex" variant="text" bg-color="background">
+    <v-list-item @click="subLinksOpen = !subLinksOpen"
+      ><span>Projects</span>
+      <v-icon
+        :icon="subLinksOpen ? 'mdi-chevron-left' : 'mdi-chevron-right'"
+      ></v-icon>
+    </v-list-item>
+    <v-list
+      horizontal
+      class="d-flex"
+      bg-color="background-darken-1"
+      v-if="subLinksOpen"
+    >
       <v-list-item
-        v-for="(subLink, index) in projectSubLinks"
-        link
+        v-for="(subLink, index) in projectNames"
         :key="index"
+        link
         :href="`project/${nameToURL(subLink)}`"
       >
         <span>{{ subLink }}</span>
       </v-list-item>
     </v-list>
-  </div>
+  </v-list>
 </template>
 
 <script>
@@ -22,8 +33,12 @@ export default {
     },
   },
   props: {
-    projectSubLinks: Array,
-    subLinksOpen: Boolean,
+    projectNames: Array,
+  },
+  data() {
+    return {
+      subLinksOpen: false,
+    };
   },
 };
 </script>

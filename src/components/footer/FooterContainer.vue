@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="justify-space-around">
+  <v-footer class="justify-space-around" color="background">
     <footer-social />
     <div id="footer-copyright" class="text-center">
       <strong>&copy; APXNR</strong> - {{ getCurrentYear() }}

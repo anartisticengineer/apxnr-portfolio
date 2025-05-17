@@ -1,36 +1,21 @@
 <template>
-  <div id="footer-social">
-    <v-list horizontal class="d-flex">
-      <v-list-item v-for="icon in iconData" :key="icon" :href="icon.link">
-        <v-icon :icon="icon.icon"></v-icon>
-        {{ icon.name }}
-      </v-list-item>
-    </v-list>
-  </div>
+  <v-list horizontal class="d-flex" id="footer-social" bg-color="background">
+    <v-list-item
+      v-for="social in socials"
+      :key="social"
+      :href="social['site-link']"
+    >
+      {{ social["site-name"] }}
+    </v-list-item>
+  </v-list>
 </template>
 
-<script setup>
-const iconData = [
-  {
-    icon: "mdi-instagram",
-    link: "https://www.instagram.com/apxnr.wav/",
-    name: "Instagram",
-  },
-  {
-    icon: "mdi-behance",
-    link: "https://www.behance.net/apxnr",
-    name: "Behance",
-  },
-  {
-    icon: "mdi-bluesky",
-    link: "https://bsky.app/profile/apxnr.bsky.social",
-    name: "Bluesky",
-  },
-];
-</script>
-
 <script>
+import socials from "../../content/components/footer/967df8b5a1be_2025-05-07.json";
 export default {
   name: "FooterSocial",
+  created() {
+    this.socials = socials.socials;
+  },
 };
 </script>
