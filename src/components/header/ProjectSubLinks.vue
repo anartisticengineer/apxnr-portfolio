@@ -16,7 +16,7 @@
         v-for="(subLink, index) in projectNames"
         :key="index"
         link
-        :href="`project/${nameToURL(subLink)}`"
+        :to="`/project/${nameToURL(subLink)}`"
       >
         <span>{{ subLink }}</span>
       </v-list-item>
