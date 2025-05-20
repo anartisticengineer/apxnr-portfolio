@@ -51,7 +51,8 @@ const vuetify = createVuetify({
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
+    exact: true,
     component: HomeView,
   },
   {
