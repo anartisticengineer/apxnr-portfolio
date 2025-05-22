@@ -1,14 +1,26 @@
 <template>
-  <v-list horizontal class="d-flex" variant="text" bg-color="background">
+  <v-list
+    class="d-flex flex-column flex-md-row"
+    variant="text"
+    bg-color="background"
+  >
+    <!-- project sub links toggle -->
     <v-list-item @click="subLinksOpen = !subLinksOpen"
       ><span>Projects</span>
-      <v-icon
-        :icon="subLinksOpen ? 'mdi-chevron-left' : 'mdi-chevron-right'"
-      ></v-icon>
+      <!-- desktop arrow icon -->
+      <div id="arrow-icon-desktop" class="d-none d-md-inline-block">
+        <v-icon
+          :icon="subLinksOpen ? 'mdi-chevron-left' : 'mdi-chevron-right'"
+        ></v-icon>
+      </div>
+      <!-- mobile arrow icon -->
+      <div id="arrow-icon-mobile" class="d-inline-block d-md-none">
+        <v-icon :icon="subLinksOpen ? 'mdi-menu-up' : 'mdi-menu-down'"></v-icon>
+      </div>
     </v-list-item>
+    <!-- project sub links list -->
     <v-list
-      horizontal
-      class="d-flex"
+      class="d-flex flex-column flex-md-row"
       bg-color="background-darken-1"
       v-if="subLinksOpen"
     >

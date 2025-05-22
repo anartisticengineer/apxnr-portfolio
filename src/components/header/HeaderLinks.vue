@@ -1,13 +1,32 @@
 <template>
-  <v-list class="d-flex" horizontal variant="text" bg-color="background">
-    <v-list-item
-      v-for="link in linkNames"
-      :key="link"
-      :to="`/${nameToURL(link)}`"
+  <!-- header links -->
+  <div id="header-links-container">
+    <!-- desktop header links -->
+    <v-list
+      id="desktop-header-links"
+      class="d-none d-md-flex flex-row"
+      variant="text"
+      bg-color="background"
     >
-      <span>{{ link }}</span>
-    </v-list-item>
-  </v-list>
+      <v-list-item
+        v-for="link in linkNames"
+        :key="link"
+        :to="`/${nameToURL(link)}`"
+      >
+        <span>{{ link }}</span>
+      </v-list-item>
+    </v-list>
+    <!-- mobile header links -->
+    <v-list id="mobile-header-links" class="d-flex d-md-none flex-column w-100">
+      <v-list-item
+        v-for="link in linkNames"
+        :key="link"
+        :to="`/${nameToURL(link)}`"
+      >
+        {{ link }}
+      </v-list-item></v-list
+    >
+  </div>
 </template>
 
 <script>

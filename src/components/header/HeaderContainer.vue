@@ -1,31 +1,51 @@
 <template>
-  <v-app-bar color="background" class="d-flex">
-    <!-- logo -->
-    <v-img
-      :src="headerContent['home-logo']"
-      :alt="headerContent['alt-text']"
-      max-width="10%"
+  <v-app-bar color="background" class="pa-5 h-auto">
+    <!-- logo container -->
+    <header-logo-container
+      @toggle-mobile-menu="mobileLinksOpen = !mobileLinksOpen"
     />
     <!-- header links -->
-    <header-links :link-names="['About Me', 'Contact']" />
+    <div class="d-none d-md-block">
+      <header-links :link-names="['About Me', 'Contact']" />
+    </div>
     <!-- projects links -->
-    <project-sub-links :project-names="['Project 1', 'Project 2']" />
+    <div class="d-none d-md-block">
+      <project-sub-links :project-names="['Project 1', 'Project 2']" />
+    </div>
+    <!-- mobile header links -->
+    <v-overlay
+      v-model="mobileLinksOpen"
+      scroll-strategy="reposition"
+      width="50%"
+    >
+      <header-links :link-names="['About Me', 'Contact']" />
+      <project-sub-links :project-names="['Project 1', 'Project 2']" />
+    </v-overlay>
   </v-app-bar>
 </template>
 
+<script setup>
+import { ref, watch } from "vue";
+const mobileLinksOpen = ref(false);
+const route = useRoute();
+watch(route, () => {
+  mobileLinksOpen.value = false;
+});
+</script>
+
 <script>
 import HeaderLinks from "./HeaderLinks.vue";
-import headerContent from "../../content/components/header/998c75e6d2ab_2025-05-07.json";
+import HeaderLogoContainer from "./HeaderLogoContainer.vue";
+
 import ProjectSubLinks from "./ProjectSubLinks.vue";
+import { useRoute } from "vue-router";
 
 export default {
   name: "HeaderContainer",
   components: {
     HeaderLinks,
     ProjectSubLinks,
-  },
-  created() {
-    this.headerContent = headerContent;
+    HeaderLogoContainer,
   },
 };
 </script>
