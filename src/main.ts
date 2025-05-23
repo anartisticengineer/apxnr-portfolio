@@ -10,12 +10,13 @@ import { aliases, mdi } from "vuetify/iconsets/mdi";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";
 import HomeView from "./components/views/HomeView.vue";
 import AboutView from "./components/views/AboutView.vue";
 import ContactView from "./components/views/ContactView.vue";
+import ProjectView from "./components/views/ProjectView.vue";
 
 const vuetify = createVuetify({
   components,
@@ -63,10 +64,14 @@ const routes = [
     path: "/contact",
     component: ContactView,
   },
+  {
+    path: "/project/:id",
+    component: ProjectView,
+  },
 ];
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 });
 

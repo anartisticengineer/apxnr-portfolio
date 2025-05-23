@@ -95,6 +95,12 @@ collections:
     format: "json"
     idenitfier_field: "title"
     fields:
+      - {
+          label: "Identifier Route (URL)",
+          name: "identifier",
+          widget: "string",
+          hint: "Example: /my-gallery ~ but don't include the leading slash",
+        }
       - { label: "Title", name: "title", widget: "string" }
       - {
           label: "Description",
