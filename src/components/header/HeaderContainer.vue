@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="background" class="pa-5 h-auto">
+  <v-app-bar color="background" class="pa-5 h-auto" data-testid="header">
     <!-- logo container -->
     <header-logo-container
       @toggle-mobile-menu="mobileLinksOpen = !mobileLinksOpen"
