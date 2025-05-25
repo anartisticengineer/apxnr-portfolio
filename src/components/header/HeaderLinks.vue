@@ -7,6 +7,7 @@
       class="d-none d-md-flex flex-row"
       variant="text"
       bg-color="background"
+      data-testid="desktop-header-links"
     >
       <v-list-item
         v-for="link in linkNames"
@@ -17,7 +18,11 @@
       </v-list-item>
     </v-list>
     <!-- mobile header links -->
-    <v-list id="mobile-header-links" class="d-flex d-md-none flex-column w-100">
+    <v-list
+      id="mobile-header-links"
+      class="d-flex d-md-none flex-column w-100"
+      data-testid="mobile-header-links"
+    >
       <v-list-item
         v-for="link in linkNames"
         :key="link"
