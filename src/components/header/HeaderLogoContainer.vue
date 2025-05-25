@@ -6,7 +6,13 @@
       class="d-flex d-md-none w-100 align-center justify-space-between"
     >
       <!-- logo -->
-      <v-card to="/" class="w-25" color="background" elevation="0">
+      <v-card
+        to="/"
+        class="w-25"
+        color="background"
+        elevation="0"
+        data-testid="mobile-logo"
+      >
         <v-img
           id="home-logo-mobile"
           :src="headerContent['home-logo']"
@@ -16,7 +22,10 @@
         />
       </v-card>
       <!-- mobile menu button -->
-      <v-btn class="d-block d-md-none" @click="$emit('toggle-mobile-menu')"
+      <v-btn
+        class="d-block d-md-none"
+        @click="$emit('toggle-mobile-menu')"
+        data-testid="mobile-menu-button"
         ><v-icon icon="mdi-menu"></v-icon
       ></v-btn>
     </div>
