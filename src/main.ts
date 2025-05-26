@@ -17,6 +17,7 @@ import HomeView from "./components/views/HomeView.vue";
 import AboutView from "./components/views/AboutView.vue";
 import ContactView from "./components/views/ContactView.vue";
 import ProjectView from "./components/views/ProjectView.vue";
+import NotFoundView from "./components/views/NotFoundView.vue";
 
 const vuetify = createVuetify({
   components,
@@ -67,6 +68,10 @@ const routes = [
   {
     path: "/project/:id",
     component: ProjectView,
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: NotFoundView,
   },
 ];
 

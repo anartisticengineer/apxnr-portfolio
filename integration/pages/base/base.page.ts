@@ -13,8 +13,16 @@ export default class BasePage {
     await this.page.goto(url);
   }
 
+  getUrl() {
+    return this.page.url();
+  }
+
   async reload() {
     await this.page.reload();
+  }
+
+  async waitForContent() {
+    await this.page.waitForLoadState("domcontentloaded");
   }
   async getHeader() {
     return this.header;
