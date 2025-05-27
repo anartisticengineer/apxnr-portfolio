@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
 import { test } from "../../fixtures/notFound.fixture";
 
-test.describe("Desktop Header Navigation", () => {
+test.describe("Redirects", () => {
   test("Redirects to 404 page", async ({ notFoundPage }) => {
     const goHomeButton = notFoundPage.goHomeButton;
     await expect(goHomeButton).toBeVisible();

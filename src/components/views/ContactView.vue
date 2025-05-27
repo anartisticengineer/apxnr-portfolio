@@ -8,6 +8,7 @@
         validate-on="blur"
         @submit="handleSubmit"
         ref="form"
+        data-testid="contact-form"
       >
         <v-text-field
           v-model="name"
@@ -16,6 +17,7 @@
           variant="outlined"
           class="py-2"
           required
+          data-testid="name-field"
         ></v-text-field>
         <v-text-field
           v-model="email"
@@ -25,6 +27,7 @@
           variant="outlined"
           class="py-2"
           required
+          data-testid="email-field"
         ></v-text-field>
         <v-select
           label="Inquiry Type"
@@ -36,6 +39,7 @@
             'Other/Just saying hi ;)',
           ]"
           variant="outlined"
+          data-testid="inquiry-type-field"
         ></v-select>
         <v-textarea
           v-model="message"
@@ -44,8 +48,16 @@
           variant="outlined"
           class="py-2"
           required
+          data-testid="message-field"
         ></v-textarea>
-        <v-btn block color="accent" type="submit" variant="tonal">Submit</v-btn>
+        <v-btn
+          block
+          color="accent"
+          type="submit"
+          variant="tonal"
+          data-testid="submit-button"
+          >Submit</v-btn
+        >
       </v-form>
       <aside
         class="text-body-2 text-lg-body-1 text-center text-md-left ma-5 w-md-50"
