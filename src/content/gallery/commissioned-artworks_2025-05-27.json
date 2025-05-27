@@ -1,0 +1,19 @@
+{
+  "identifier": "commissions",
+  "title": "Commissioned Artworks",
+  "description": "Some of my favorite commissioned artworks over the years, primarily under the _cyberart\\_by\\_justin_ name. Mostly used Photoshop for these, but occasionally incorporate Audacity, Processing and hex editing for the effects.",
+  "images": [
+    {
+      "image": "/images/uploads/kaptivate_collide-72.webp",
+      "alt-text": "Kaptivate Collide Album Cover"
+    },
+    {
+      "image": "/images/uploads/unbeliever_fb_cover.webp",
+      "alt-text": "Unbeliever Cover"
+    },
+    {
+      "image": "/images/uploads/love paranoia-apparition.webp",
+      "alt-text": "Love Paranoia Apparition Album Cover"
+    }
+  ]
+}
