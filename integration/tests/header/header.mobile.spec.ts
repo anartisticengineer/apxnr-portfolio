@@ -2,10 +2,6 @@ import { test } from "../../fixtures/home.fixture";
 import { expect } from "@playwright/test";
 
 test.describe("Mobile Header Navigation", () => {
-  test.beforeEach(async ({ homePage }) => {
-    await homePage.goto("/");
-  });
-
   test("Mobile Toggle Is Visible", async ({ homePage }) => {
     await expect(homePage.header.mobileMenuButton).toBeVisible();
   });
