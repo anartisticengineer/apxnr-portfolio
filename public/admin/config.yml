@@ -1,5 +1,5 @@
 backend:
-  branch: main
+  branch: staging
   name: github
   repo: anartisticengineer/apxnr-portfolio
   base_url: "https://sveltia-cms-auth.justinanthonyjohnson1995.workers.dev"
