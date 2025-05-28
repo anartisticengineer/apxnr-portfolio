@@ -50,7 +50,6 @@ const initialGallery = {
 const galleryContent = ref(initialGallery);
 
 onMounted(() => {
-  document.title = `APXNR | ${id.value}`;
   const selectedGallery = allGalleries.find(
     (gallery) => gallery.identifier === id.value
   );
@@ -58,6 +57,7 @@ onMounted(() => {
     galleryContent.value.title = selectedGallery.title;
     galleryContent.value.description = selectedGallery.description;
     galleryContent.value.images = selectedGallery.images;
+    document.title = `APXNR | ${selectedGallery.title}`;
   } else {
     router.push("/404");
   }

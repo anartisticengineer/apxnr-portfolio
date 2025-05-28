@@ -22,5 +22,8 @@
 <script lang="ts">
 export default {
   name: "NotFoundView",
+  created() {
+    document.title = "APXNR | Whoops ;P";
+  },
 };
 </script>

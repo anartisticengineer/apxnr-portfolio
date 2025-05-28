@@ -95,5 +95,8 @@ const handleSubmit = (e: Event) => {
 <script lang="ts">
 export default {
   name: "ContactView",
+  created() {
+    document.title = "APXNR | Contact Me";
+  },
 };
 </script>

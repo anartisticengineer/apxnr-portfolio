@@ -24,6 +24,7 @@ import aboutPageContent from "../../content/pages/about-me/69d2fa2a8eef_2025-05-
 export default {
   name: "AboutView",
   created() {
+    document.title = "APXNR | About Me";
     this.aboutPageContent = aboutPageContent;
     this.summary = new MarkdownIt().render(aboutPageContent["summary"]);
   },
