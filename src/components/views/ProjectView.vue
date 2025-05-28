@@ -33,12 +33,13 @@ import { onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 import commissionsGallery from "../../content/gallery/commissioned-artworks_2025-05-27.json";
+import glitchFxGallery from "../../content/gallery/glitch-fx-generators_2025-05-28.json";
 
 const route = useRoute();
 const router = useRouter();
 const id = ref(route.params.id);
 
-const allGalleries = [commissionsGallery];
+const allGalleries = [commissionsGallery, glitchFxGallery];
 
 const initialGallery = {
   identifier: "",

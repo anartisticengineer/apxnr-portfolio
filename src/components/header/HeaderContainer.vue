@@ -27,15 +27,18 @@
 <script setup lang="ts">
 import { onMounted, Ref, ref, watch } from "vue";
 import commissionsGallery from "../../content/gallery/commissioned-artworks_2025-05-27.json";
+import glitchFXGenerators from "../../content/gallery/glitch-fx-generators_2025-05-28.json";
 
 const mobileLinksOpen = ref(false);
 const route = useRoute();
 const projectLinks: Ref<{}[]> = ref([]);
 
 onMounted(() => {
-  const links = [commissionsGallery].map(({ title, identifier }) => {
-    return { title, identifier };
-  });
+  const links = [commissionsGallery, glitchFXGenerators].map(
+    ({ title, identifier }) => {
+      return { title, identifier };
+    }
+  );
   projectLinks.value = links;
 });
 
