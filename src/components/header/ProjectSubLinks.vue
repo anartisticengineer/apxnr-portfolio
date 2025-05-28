@@ -36,16 +36,22 @@
   </v-list>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const subLinksOpen = ref(false);
+watch(route, () => {
+  subLinksOpen.value = false;
+});
+</script>
+
+<script lang="ts">
 export default {
   name: "ProjectSubLinks",
   props: {
-    projectLinks: Array,
-  },
-  data() {
-    return {
-      subLinksOpen: false,
-    };
+    projectLinks: Object,
   },
 };
 </script>

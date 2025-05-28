@@ -33,8 +33,8 @@ const route = useRoute();
 const projectLinks: Ref<{}[]> = ref([]);
 
 onMounted(() => {
-  const links = [commissionsGallery].map((gallery) => {
-    return { title: gallery.title, identifier: gallery.identifier };
+  const links = [commissionsGallery].map(({ title, identifier }) => {
+    return { title, identifier };
   });
   projectLinks.value = links;
 });
