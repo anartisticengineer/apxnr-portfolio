@@ -25,12 +25,12 @@
       v-if="subLinksOpen"
     >
       <v-list-item
-        v-for="(subLink, index) in projectNames"
+        v-for="(subLink, index) in projectLinks"
         :key="index"
         link
-        :to="`/project/${nameToURL(subLink)}`"
+        :to="`/project/${subLink.identifier}`"
       >
-        <span>{{ subLink }}</span>
+        <span>{{ subLink.title }}</span>
       </v-list-item>
     </v-list>
   </v-list>
@@ -39,13 +39,8 @@
 <script>
 export default {
   name: "ProjectSubLinks",
-  methods: {
-    nameToURL(name) {
-      return name.toLowerCase().replace(" ", "-");
-    },
-  },
   props: {
-    projectNames: Array,
+    projectLinks: Array,
   },
   data() {
     return {

@@ -10,7 +10,7 @@
     </div>
     <!-- projects links -->
     <div class="d-none d-md-block">
-      <project-sub-links :project-names="['Project 1', 'Project 2']" />
+      <project-sub-links :project-links="projectLinks" />
     </div>
     <!-- mobile header links -->
     <v-overlay
@@ -19,21 +19,32 @@
       width="50%"
     >
       <header-links :link-names="['About Me', 'Contact']" />
-      <project-sub-links :project-names="['Project 1', 'Project 2']" />
+      <project-sub-links :project-links="projectLinks" />
     </v-overlay>
   </v-app-bar>
 </template>
 
-<script setup>
-import { ref, watch } from "vue";
+<script setup lang="ts">
+import { onMounted, Ref, ref, watch } from "vue";
+import commissionsGallery from "../../content/gallery/commissioned-artworks_2025-05-27.json";
+
 const mobileLinksOpen = ref(false);
 const route = useRoute();
+const projectLinks: Ref<{}[]> = ref([]);
+
+onMounted(() => {
+  const links = [commissionsGallery].map((gallery) => {
+    return { title: gallery.title, identifier: gallery.identifier };
+  });
+  projectLinks.value = links;
+});
+
 watch(route, () => {
   mobileLinksOpen.value = false;
 });
 </script>
 
-<script>
+<script lang="ts">
 import HeaderLinks from "./HeaderLinks.vue";
 import HeaderLogoContainer from "./HeaderLogoContainer.vue";
 
