@@ -1,29 +1,23 @@
 <template>
-  <v-container>
-    <h1 class="text-left text-md-center w-100 ma-5">
+  <v-container max-width="1500">
+    <h1 class="text-left text-md-center align-center w-100 ma-5">
       {{ `${galleryContent.title || "Project"}` }}
+      <gallery-info :gallery-content="galleryContent"></gallery-info>
     </h1>
     <v-divider color="accent"></v-divider>
-    <!-- display images -->
-    <section class="d-flex flex-column flex-md-row flex-wrap">
+    <section class="d-flex flex-column align-center py-5">
+      <!-- display images -->
       <div
-        class="w-100 w-md-75 pa-5"
-        :min-height="500"
-        transition="fade-transition"
+        id="images-container"
+        class="d-flex justify-center flex-wrap w-75 pa-2 ma-5"
       >
-        <v-img
+        <gallery-image
           v-for="(image, index) in galleryContent.images"
-          max-width="500"
           :key="index"
           :src="image.image"
           :alt="image['alt-text']"
-          cover
-        ></v-img>
+        ></gallery-image>
       </div>
-      <aside
-        class="w-100 w-md-25 pa-5"
-        v-html="mdToHtml(galleryContent.description)"
-      ></aside>
     </section>
   </v-container>
 </template>
@@ -50,34 +44,39 @@ const initialGallery = {
 
 const galleryContent = ref(initialGallery);
 
-onMounted(() => {
-  const selectedGallery = allGalleries.find(
-    (gallery) => gallery.identifier === id.value
-  );
-  if (selectedGallery) {
+const getContentWithId = (idValueIn: string | string[]) => {
+  try {
+    const selectedGallery = allGalleries.find(
+      (gallery) => gallery.identifier === idValueIn
+    );
+    if (!selectedGallery) throw new Error("Gallery not found");
     galleryContent.value.title = selectedGallery.title;
     galleryContent.value.description = selectedGallery.description;
     galleryContent.value.images = selectedGallery.images;
     document.title = `APXNR | ${selectedGallery.title}`;
-  } else {
+  } catch {
     router.push("/404");
   }
+};
+
+onMounted(() => {
+  getContentWithId(id.value);
 });
 
 watch(route, () => {
   id.value = route.params.id;
+  getContentWithId(id.value);
 });
 </script>
 
 <script lang="ts">
-import MarkdownIt from "markdown-it";
+import GalleryInfo from "../gallery/GalleryInfo.vue";
+import GalleryImage from "../gallery/GalleryImage.vue";
 export default {
   name: "ProjectView",
-  methods: {
-    mdToHtml(text: string) {
-      const md = new MarkdownIt();
-      return md.render(text);
-    },
+  components: {
+    GalleryImage,
+    GalleryInfo,
   },
 };
 </script>
