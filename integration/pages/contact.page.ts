@@ -9,7 +9,8 @@ export default class ContactPage extends BasePage {
   readonly messageField: Locator;
   //error messages
   readonly nameError: Locator;
-  readonly emailError: Locator;
+  readonly emptyEmailError: Locator;
+  readonly invalidEmailFormatError: Locator;
   readonly inquiryError: Locator;
   readonly messageError: Locator;
   readonly submitButton: Locator;
@@ -22,24 +23,25 @@ export default class ContactPage extends BasePage {
     this.emailField = this.contactForm
       .getByTestId("email-field")
       .locator("input");
-    this.inquiryField = this.contactForm
-      .getByTestId("inquiry-type-field")
-      .locator("input");
+    this.inquiryField = this.contactForm.getByTestId("inquiry-type-field");
     this.messageField = this.contactForm
       .getByTestId("message-field")
       .locator("textarea");
     this.nameError = this.contactForm
       .getByTestId("name-field")
-      .getByRole("alert");
-    this.emailError = this.contactForm
+      .getByText("Name is required");
+    this.emptyEmailError = this.contactForm
       .getByTestId("email-field")
-      .getByRole("alert");
+      .getByText("E-mail is required");
+    this.invalidEmailFormatError = this.contactForm
+      .getByTestId("email-field")
+      .getByText("E-mail must be valid");
     this.inquiryError = this.contactForm
       .getByTestId("inquiry-type-field")
-      .getByRole("alert");
+      .getByText("Inquiry type is required");
     this.messageError = this.contactForm
       .getByTestId("message-field")
-      .getByRole("alert");
+      .getByText("Message is required");
     this.submitButton = this.contactForm.getByTestId("submit-button");
   }
   async fillName(name: string) {
@@ -58,15 +60,16 @@ export default class ContactPage extends BasePage {
     await this.emailField.blur();
   }
 
-  async fillInquiry(inquiry: string | null) {
+  async fillInquiry(inquiry?: string) {
+    await this.inquiryField.click();
     if (inquiry) {
-      await this.inquiryField.selectOption(inquiry);
+      const option = this.inquiryField.getByRole("option", {
+        name: inquiry,
+      });
+      await option.click();
     }
-    await this.inquiryField.blur();
-  }
-
-  async blurInquiryField() {
-    await this.inquiryField.blur();
+    // await this.blurInquiryField();
+    await this.inquiryField.press("Tab");
   }
 
   async fillMessage(message: string) {

@@ -6,47 +6,55 @@ test.describe("Desktop Contact Page", () => {
     await contactPage.fillName("");
     await contactPage.blurNameField();
 
-    expect(contactPage.nameError).toBeVisible();
+    await expect(contactPage.nameError).toBeVisible();
   });
 
   test("Empty Email Field Validation", async ({ contactPage }) => {
     await contactPage.fillEmail("");
     await contactPage.blurEmailField();
 
-    expect(contactPage.emailError).toBeVisible();
-    expect(contactPage.emailError).toHaveText("E-mail is required");
+    await expect(contactPage.emptyEmailError).toBeVisible();
+    await expect(contactPage.emptyEmailError).toHaveText("E-mail is required");
   });
 
   test("Invalid Email Field Validation", async ({ contactPage }) => {
     await contactPage.fillEmail("invalid-email");
     await contactPage.blurEmailField();
 
-    expect(contactPage.emailError).toBeVisible();
-    expect(contactPage.emailError).toHaveText("E-mail must be valid");
+    await expect(contactPage.invalidEmailFormatError).toBeVisible();
+    await expect(contactPage.invalidEmailFormatError).toHaveText(
+      "E-mail must be valid"
+    );
   });
 
   test("No Inquiry Chosen", async ({ contactPage }) => {
-    await contactPage.fillInquiry(null);
-    await contactPage.blurInquiryField();
-
-    expect(contactPage.inquiryError).toBeVisible();
+    await contactPage.fillInquiry();
+    await expect(contactPage.inquiryError).toBeVisible();
   });
 
   test("Empty Message Field Validation", async ({ contactPage }) => {
     await contactPage.fillMessage("");
     await contactPage.blurMessageField();
 
-    expect(contactPage.messageError).toBeVisible();
+    await expect(contactPage.messageError).toBeVisible();
   });
 
   test("Submit with empty fields", async ({ contactPage }) => {
     await contactPage.submitForm();
 
-    expect(contactPage.nameError).toBeVisible();
-    expect(contactPage.emailError).toBeVisible();
-    expect(contactPage.inquiryError).toBeVisible();
-    expect(contactPage.messageError).toBeVisible();
+    await expect(contactPage.nameError).toBeVisible();
+    await expect(contactPage.emptyEmailError).toBeVisible();
+    await expect(contactPage.inquiryError).toBeVisible();
+    await expect(contactPage.messageError).toBeVisible();
   });
 
-  test.skip("Successful Submission", async ({ contactPage }) => {});
+  test.skip("Successful Submission", async ({ contactPage }) => {
+    await contactPage.fillName("John Doe");
+    await contactPage.fillEmail("test@example.com");
+    await contactPage.fillInquiry("Commissions");
+    await contactPage.fillMessage("This is a test message");
+    await contactPage.submitForm();
+
+    //still needs to be implemented - awaiting a redirect most likely
+  });
 });
