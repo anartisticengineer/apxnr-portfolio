@@ -5,7 +5,9 @@
     bg-color="background"
   >
     <!-- project sub links toggle -->
-    <v-list-item @click="subLinksOpen = !subLinksOpen"
+    <v-list-item
+      @click="subLinksOpen = !subLinksOpen"
+      data-testid="project-sub-links-toggle"
       ><span>Projects</span>
       <!-- desktop arrow icon -->
       <div id="arrow-icon-desktop" class="d-none d-md-inline-block">
@@ -22,6 +24,7 @@
     <v-list
       class="d-flex flex-column flex-md-row"
       bg-color="background-darken-1"
+      data-testid="project-sub-links"
       v-if="subLinksOpen"
     >
       <v-list-item

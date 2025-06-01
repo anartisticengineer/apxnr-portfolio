@@ -9,9 +9,11 @@ export default class Header {
   readonly homeLink: Locator;
   readonly desktopAboutLink: Locator;
   readonly desktopContactLink: Locator;
-  readonly desktopProjectToggle: Locator;
+  readonly subLinksToggle: Locator;
   readonly mobileAboutLink: Locator;
   readonly mobileContactLink: Locator;
+  readonly mobileProjectToggle: Locator;
+  readonly projectSubLinks: Locator;
   constructor(page: Page) {
     this.page = page;
     this.headerContainer = this.page.getByTestId("header");
@@ -32,14 +34,19 @@ export default class Header {
     this.desktopContactLink = this.desktopHeaderLinks.getByRole("link", {
       name: "Contact",
     });
-    this.desktopProjectToggle =
-      this.headerContainer.getByTestId("project-toggle");
-    this.mobileAboutLink = this.mobileHeaderLinks.getByRole("link", {
-      name: "About Me",
-    });
-    this.mobileContactLink = this.mobileHeaderLinks.getByRole("link", {
-      name: "Contact",
-    });
+    this.subLinksToggle = this.page
+      .getByTestId("project-sub-links-toggle")
+      .filter({ visible: true });
+    this.mobileAboutLink = this.page
+      .getByTestId("mobile-about-me-link")
+      .filter({ visible: true });
+    this.mobileContactLink = this.page
+      .getByTestId("mobile-contact-link")
+      .filter({ visible: true });
+    this.mobileProjectToggle = this.page
+      .getByTestId("mobile-project-toggle")
+      .filter({ visible: true });
+    this.projectSubLinks = this.page.getByTestId("project-sub-links");
   }
 
   async openMobileMenu() {
@@ -72,5 +79,9 @@ export default class Header {
       return;
     }
     await this.desktopContactLink.click();
+  }
+
+  async toggleProjectLinks() {
+    await this.subLinksToggle.click();
   }
 }

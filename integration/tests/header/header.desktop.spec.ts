@@ -16,5 +16,8 @@ test.describe("Desktop Header Navigation", () => {
     expect(homePage.getUrl()).toContain("/contact");
   });
 
-  test.skip("Open Project Links", async ({ homePage }) => {});
+  test("Open Project Links", async ({ homePage }) => {
+    await homePage.header.toggleProjectLinks();
+    await expect(homePage.header.projectSubLinks).toBeVisible();
+  });
 });

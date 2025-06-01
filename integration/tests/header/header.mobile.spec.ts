@@ -18,17 +18,21 @@ test.describe("Mobile Header Navigation", () => {
     await expect(mobileLinks).not.toBeVisible();
   });
 
-  test.fixme("Go to About Me Page", async ({ homePage }) => {
+  test("Go to About Me Page", async ({ homePage }) => {
     await homePage.header.openMobileMenu();
     await homePage.header.goToAboutPage();
     expect(homePage.getUrl()).toContain("/about-me");
   });
 
-  test.fixme("Go to Contact Page", async ({ homePage }) => {
+  test("Go to Contact Page", async ({ homePage }) => {
     await homePage.header.openMobileMenu();
     await homePage.header.goToContactPage();
     expect(homePage.getUrl()).toContain("/contact");
   });
 
-  test.skip("Open Project Links", async ({ homePage }) => {});
+  test("Open Project Links", async ({ homePage }) => {
+    await homePage.header.openMobileMenu();
+    await homePage.header.toggleProjectLinks();
+    await expect(homePage.header.projectSubLinks).toBeVisible();
+  });
 });
