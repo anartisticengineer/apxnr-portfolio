@@ -5,7 +5,9 @@
     bg-color="background"
   >
     <!-- project sub links toggle -->
-    <v-list-item @click="subLinksOpen = !subLinksOpen"
+    <v-list-item
+      @click="subLinksOpen = !subLinksOpen"
+      data-testid="project-sub-links-toggle"
       ><span>Projects</span>
       <!-- desktop arrow icon -->
       <div id="arrow-icon-desktop" class="d-none d-md-inline-block">
@@ -22,35 +24,37 @@
     <v-list
       class="d-flex flex-column flex-md-row"
       bg-color="background-darken-1"
+      data-testid="project-sub-links"
       v-if="subLinksOpen"
     >
       <v-list-item
-        v-for="(subLink, index) in projectNames"
+        v-for="(subLink, index) in projectLinks"
         :key="index"
         link
-        :to="`/project/${nameToURL(subLink)}`"
+        :to="`/project/${subLink.identifier}`"
       >
-        <span>{{ subLink }}</span>
+        <span>{{ subLink.title }}</span>
       </v-list-item>
     </v-list>
   </v-list>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const subLinksOpen = ref(false);
+watch(route, () => {
+  subLinksOpen.value = false;
+});
+</script>
+
+<script lang="ts">
 export default {
   name: "ProjectSubLinks",
-  methods: {
-    nameToURL(name) {
-      return name.toLowerCase().replace(" ", "-");
-    },
-  },
   props: {
-    projectNames: Array,
-  },
-  data() {
-    return {
-      subLinksOpen: false,
-    };
+    projectLinks: Object,
   },
 };
 </script>

@@ -33,7 +33,7 @@ const vuetify = createVuetify({
   theme: {
     defaultTheme: "myCustomTheme",
     variations: {
-      colors: ["background"],
+      colors: ["background", "primary", "secondary", "accent", "error"],
       lighten: 2,
       darken: 2,
     },

@@ -12,6 +12,7 @@
       <v-list-item
         v-for="link in linkNames"
         :key="link"
+        :data-testid="`desktop-${nameToURL(link)}-link`"
         :to="`/${nameToURL(link)}`"
       >
         <span>{{ link }}</span>
@@ -26,6 +27,7 @@
       <v-list-item
         v-for="link in linkNames"
         :key="link"
+        :data-testid="`mobile-${nameToURL(link)}-link`"
         :to="`/${nameToURL(link)}`"
       >
         {{ link }}

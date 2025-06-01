@@ -1,0 +1,43 @@
+{
+  "identifier": "glitch-fx",
+  "title": "Glitch FX Generators",
+  "description": "Over the years, I built a few tools (or multiple versions of the same tool I guess) for generating \"glitch\" effects from a given input image.\n\nThe original was a p5js sketch on OpenProcessing, then a more advanced one was built using Processing. Later on using Python and incorporating more OpenCV, a third version was made to try and take advantage of the command line.\n\nTested on a few open source images from Unsplash, and incorporated into some of my past artworks.\n\n- [The P5JS Version](https://openprocessing.org/sketch/617537)\n\n- [The Original Processing Verison](https://github.com/anartisticengineer/Glitch-FX-Processing-Version)\n\n- [The Python Version](https://github.com/anartisticengineer/GlitchFX3)",
+  "images": [
+    {
+      "image": "/images/uploads/test_a6.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_22.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_a10.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/gfx1.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_27.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_a4.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_a11.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_1.webp",
+      "alt-text": ""
+    },
+    {
+      "image": "/images/uploads/test_7.webp",
+      "alt-text": ""
+    }
+  ]
+}

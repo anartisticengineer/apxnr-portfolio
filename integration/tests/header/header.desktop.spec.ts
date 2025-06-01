@@ -6,5 +6,18 @@ test.describe("Desktop Header Navigation", () => {
     await expect(homePage.header.desktopHeaderLinks).toBeVisible();
   });
 
-  test.skip("Open Project Links", async ({ homePage }) => {});
+  test("Go to About Me Page", async ({ homePage }) => {
+    await homePage.header.goToAboutPage();
+    expect(homePage.getUrl()).toContain("/about-me");
+  });
+
+  test("Go to Contact Page", async ({ homePage }) => {
+    await homePage.header.goToContactPage();
+    expect(homePage.getUrl()).toContain("/contact");
+  });
+
+  test("Open Project Links", async ({ homePage }) => {
+    await homePage.header.toggleProjectLinks();
+    await expect(homePage.header.projectSubLinks).toBeVisible();
+  });
 });
