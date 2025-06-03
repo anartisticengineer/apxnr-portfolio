@@ -1,12 +1,17 @@
 <template>
   <v-container max-width="1500">
-    <div class="d-flex w-100 ma-5 justify-start justify-md-center">
-      <h1 class="text-left text-md-center">
+    <div class="d-flex w-100 ma-5 justify-start justify-md-center align-center">
+      <h1
+        class="text-left text-md-center text-h6 text-sm-h5 text-md-h4 font-weight-bold"
+      >
         {{ `${galleryContent.title || "Project"}` }}
       </h1>
       <gallery-info :gallery-content="galleryContent"></gallery-info>
     </div>
     <v-divider color="accent"></v-divider>
+    <div class="ma-5 text-subtitle-1">
+      Click the info button for more details ^
+    </div>
     <!-- display images -->
     <gallery-grid
       :columns="columns"
