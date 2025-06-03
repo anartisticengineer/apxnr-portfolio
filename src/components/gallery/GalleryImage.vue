@@ -1,10 +1,12 @@
 <template>
   <v-img
-    class="w-100 flex-grow-1 ma-1"
+    class="my-5"
     :src="src"
     :alt="alt"
     cover
     transition="fade-transition"
+    @load="isLoading = false"
+    elevation="10"
   >
     <v-slot:placeholder v-if="isLoading">
       <v-row class="fill-height ma-0 justify-center align-center">
@@ -18,13 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 
 const isLoading = ref(true);
-
-onMounted(() => {
-  isLoading.value = false;
-});
 </script>
 
 <script lang="ts">

@@ -1,48 +1,35 @@
 <template>
   <v-container max-width="1500">
-    <h1 class="text-left text-md-center align-center w-100 ma-5">
-      {{ `${galleryContent.title || "Project"}` }}
+    <div class="d-flex w-100 ma-5 justify-start justify-md-center">
+      <h1 class="text-left text-md-center">
+        {{ `${galleryContent.title || "Project"}` }}
+      </h1>
       <gallery-info :gallery-content="galleryContent"></gallery-info>
-    </h1>
+    </div>
     <v-divider color="accent"></v-divider>
-    <section class="d-flex flex-column align-center py-5">
-      <!-- display images -->
-      <div
-        id="images-container"
-        class="d-flex justify-center flex-wrap w-75 pa-2 ma-5"
-      >
-        <gallery-image
-          v-for="(image, index) in galleryContent.images"
-          :key="index"
-          :src="image.image"
-          :alt="image['alt-text']"
-        ></gallery-image>
-      </div>
-    </section>
+    <!-- display images -->
+    <gallery-grid
+      :columns="columns"
+      :images="galleryContent.images"
+    ></gallery-grid>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, Ref, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useDisplay } from "vuetify/lib/framework.mjs";
 
 import commissionsGallery from "../../content/gallery/commissioned-artworks_2025-05-27.json";
 import glitchFxGallery from "../../content/gallery/glitch-fx-generators_2025-05-28.json";
-
+//setup gallery content
 const route = useRoute();
 const router = useRouter();
 const id = ref(route.params.id);
 
 const allGalleries = [commissionsGallery, glitchFxGallery];
 
-const initialGallery = {
-  identifier: "",
-  title: "",
-  description: "",
-  images: [{ image: "", "alt-text": "" }],
-};
-
-const galleryContent = ref(initialGallery);
+const galleryContent: Ref<GalleryContent> = ref(new EmptyGalleryContent());
 
 const getContentWithId = (idValueIn: string | string[]) => {
   try {
@@ -52,7 +39,13 @@ const getContentWithId = (idValueIn: string | string[]) => {
     if (!selectedGallery) throw new Error("Gallery not found");
     galleryContent.value.title = selectedGallery.title;
     galleryContent.value.description = selectedGallery.description;
-    galleryContent.value.images = selectedGallery.images;
+    galleryContent.value.identifier = selectedGallery.identifier;
+    galleryContent.value.images = selectedGallery.images.map((image) => {
+      return {
+        image: image.image,
+        altText: image["alt-text"],
+      };
+    });
     document.title = `APXNR | ${selectedGallery.title}`;
   } catch {
     router.push("/404");
@@ -67,16 +60,21 @@ watch(route, () => {
   id.value = route.params.id;
   getContentWithId(id.value);
 });
+
+const { mdAndUp } = useDisplay();
+const columns = ref(mdAndUp.value ? 3 : 1);
 </script>
 
 <script lang="ts">
 import GalleryInfo from "../gallery/GalleryInfo.vue";
-import GalleryImage from "../gallery/GalleryImage.vue";
+import GalleryGrid from "../gallery/GalleryGrid.vue";
+import { EmptyGalleryContent, GalleryContent } from "@/types/gallery";
+
 export default {
   name: "ProjectView",
   components: {
-    GalleryImage,
     GalleryInfo,
+    GalleryGrid,
   },
 };
 </script>
