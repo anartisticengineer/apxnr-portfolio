@@ -9,11 +9,12 @@
       ></v-btn>
     </template>
     <template v-slot:default="{ isActive }">
-      <v-card color="background-lighten-2" class="pa-5">
+      <v-card color="background-lighten-1" class="pa-5">
         <div class="d-flex justify-end">
           <v-btn
             icon="mdi-close"
             variant="text"
+            data-testid="gallery-info-close-button"
             @click="isActive.value = false"
           ></v-btn>
         </div>
@@ -43,3 +44,14 @@ export default {
   },
 };
 </script>
+
+<style>
+#description-container a {
+  color: #279af1;
+}
+#description-container ul {
+  list-style: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+</style>
