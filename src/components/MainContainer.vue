@@ -18,9 +18,6 @@ import FooterContainer from "./footer/FooterContainer.vue";
 
 export default {
   name: "MainContainer",
-  props: {
-    msg: String,
-  },
   components: {
     RouterView,
     HeaderContainer,
