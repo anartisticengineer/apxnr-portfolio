@@ -65,7 +65,7 @@ watch(route, () => {
   id.value = route.params.id;
   getContentWithId(id.value);
 });
-
+//Setup number of columns for grid
 const { mdAndUp } = useDisplay();
 const columns = ref(mdAndUp.value ? 3 : 1);
 </script>
