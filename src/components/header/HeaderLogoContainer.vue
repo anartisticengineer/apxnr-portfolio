@@ -30,16 +30,12 @@
       ></v-btn>
     </div>
     <!-- logo container desktop -->
-    <v-card
-      to="/"
-      class="d-none d-md-block justify-center align-center"
-      color="background"
-    >
+    <v-card to="/" class="d-none d-md-block" color="background">
       <v-img
         id="home-logo-desktop"
         :src="headerContent['home-logo']"
         :alt="headerContent['alt-text']"
-        class="mr-5"
+        class="mx-5"
         width="100"
         cover
       />

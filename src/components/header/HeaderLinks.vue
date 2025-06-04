@@ -23,6 +23,7 @@
       id="mobile-header-links"
       class="d-flex d-md-none flex-column w-100"
       data-testid="mobile-header-links"
+      bg-color="background-lighten-1"
     >
       <v-list-item
         v-for="link in linkNames"
@@ -36,14 +37,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "HeaderLinks",
   props: {
-    linkNames: Array,
+    linkNames: Object as () => string[],
   },
   methods: {
-    nameToURL(name) {
+    nameToURL(name: string): string {
       return name.toLowerCase().replace(" ", "-");
     },
   },
