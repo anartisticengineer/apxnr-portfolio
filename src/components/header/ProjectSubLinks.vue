@@ -1,30 +1,39 @@
 <template>
   <v-list
-    class="d-flex flex-column flex-md-row"
+    class="d-flex flex-column flex-md-row h-screen"
     variant="text"
     bg-color="background"
   >
     <!-- project sub links toggle -->
-    <v-list-item
-      @click="subLinksOpen = !subLinksOpen"
-      data-testid="project-sub-links-toggle"
-      ><span>Projects</span>
-      <!-- desktop arrow icon -->
-      <div id="arrow-icon-desktop" class="d-none d-md-inline-block">
-        <v-icon
-          :icon="subLinksOpen ? 'mdi-chevron-left' : 'mdi-chevron-right'"
-        ></v-icon>
-      </div>
-      <!-- mobile arrow icon -->
-      <div id="arrow-icon-mobile" class="d-inline-block d-md-none">
-        <v-icon :icon="subLinksOpen ? 'mdi-menu-up' : 'mdi-menu-down'"></v-icon>
-      </div>
+    <v-list-item>
+      <v-btn
+        @click="subLinksOpen = !subLinksOpen"
+        data-testid="project-sub-links-toggle"
+        variant="text"
+        class="pl-0 text-none text-subtitle-1"
+      >
+        <!-- project sub links toggle text -->
+        <span>Projects</span>
+        <!-- desktop arrow icon -->
+        <div id="arrow-icon-desktop" class="d-none d-md-inline-block">
+          <v-icon
+            :icon="subLinksOpen ? 'mdi-chevron-left' : 'mdi-chevron-right'"
+          ></v-icon>
+        </div>
+        <!-- mobile arrow icon -->
+        <div id="arrow-icon-mobile" class="d-inline-block d-md-none">
+          <v-icon
+            :icon="subLinksOpen ? 'mdi-menu-up' : 'mdi-menu-down'"
+          ></v-icon>
+        </div>
+      </v-btn>
     </v-list-item>
     <!-- project sub links list -->
     <v-list
       class="d-flex flex-column flex-md-row"
-      bg-color="background-darken-1"
+      bg-color="primary-darken-1"
       data-testid="project-sub-links"
+      elevation="20"
       v-if="subLinksOpen"
     >
       <v-list-item
