@@ -18,6 +18,7 @@ import AboutView from "./components/views/AboutView.vue";
 import ContactView from "./components/views/ContactView.vue";
 import ProjectView from "./components/views/ProjectView.vue";
 import NotFoundView from "./components/views/NotFoundView.vue";
+import FormSubmittedView from "./components/views/FormSubmittedView.vue";
 
 const vuetify = createVuetify({
   components,
@@ -64,6 +65,10 @@ const routes = [
   {
     path: "/contact",
     component: ContactView,
+  },
+  {
+    path: "/success",
+    component: FormSubmittedView,
   },
   {
     path: "/project/:id",
