@@ -34,6 +34,26 @@ collections:
     slug: "{{fields.title}}_{{year}}-{{month}}-{{day}}"
     create: true
     fields:
+      - label: Banner Image
+        name: "banner-image"
+        widget: "object"
+        fields:
+          - {
+              label: "Banner Image",
+              name: "banner-image",
+              widget: "image",
+              required: true,
+            }
+          - {
+              label: Mobile Banner Image,
+              name: "mobile-banner-image",
+              widget: "image",
+            }
+          - {
+              label: "Banner Alt Text",
+              name: "banner-alt-text",
+              widget: "string",
+            }
       - { label: "Title", name: "title", widget: "string" }
       - label: "Call to Action"
         name: "call-to-action"
