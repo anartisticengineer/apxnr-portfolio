@@ -1,8 +1,13 @@
 {
+  "banner-image": {
+    "banner-image": "/images/uploads/BannerGifOriginal.gif",
+    "mobile-banner-image": "/images/uploads/BannerGifSmaller.gif",
+    "banner-alt-text": "APXNR Banner Image"
+  },
   "title": "Artist. Engineer. Artistic Engineer.",
   "call-to-action": {
     "call-to-action-text": "I've been creating a lot of cool stuff lately",
-    "call-to-action-btn-text": "Have a look here...",
+    "call-to-action-btn-text": "Have a look on Instagram",
     "call-to-action-goto-link": "https://www.instagram.com/apxnr.wav/"
   }
 }
