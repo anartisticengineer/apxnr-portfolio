@@ -5,25 +5,15 @@
     :alt="alt"
     cover
     transition="fade-transition"
-    @load="isLoading = false"
     elevation="10"
   >
-    <v-slot:placeholder v-if="isLoading">
-      <v-row class="fill-height ma-0 justify-center align-center">
-        <v-progress-circular
-          indeterminate
-          color="accent-lighten-1"
-        ></v-progress-circular>
+    <template v-slot:placeholder>
+      <v-row class="fill-height ma-0">
+        <v-skeleton-loader color="background" type="image"></v-skeleton-loader>
       </v-row>
-    </v-slot:placeholder>
+    </template>
   </v-img>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-
-const isLoading = ref(true);
-</script>
 
 <script lang="ts">
 export default {

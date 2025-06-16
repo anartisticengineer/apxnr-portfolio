@@ -1,18 +1,26 @@
 <template>
-  <v-skeleton-loader type="image" :loading="isLoading" color="background">
+  <div>
     <v-img
       id="home-banner-desktop"
       :src="bannerSrc"
       class="d-none d-md-block"
       cover
-    ></v-img>
+    >
+      <template v-slot:placeholder>
+        <v-skeleton-loader color="primary" type="image"></v-skeleton-loader>
+      </template>
+    </v-img>
     <v-img
       id="home-banner-mobile"
       :src="mobileBannerSrc"
       class="d-block d-md-none"
       cover
-    ></v-img>
-  </v-skeleton-loader>
+    >
+      <template v-slot:placeholder>
+        <v-skeleton-loader color="primary" type="image"></v-skeleton-loader>
+      </template>
+    </v-img>
+  </div>
 </template>
 
 <script setup lang="ts">
