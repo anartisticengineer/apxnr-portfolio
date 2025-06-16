@@ -17,6 +17,7 @@
       v-model="mobileLinksOpen"
       scroll-strategy="reposition"
       width="50%"
+      elevation="10"
     >
       <header-links :link-names="['About Me', 'Contact']" />
       <project-sub-links :project-links="projectLinks" />
