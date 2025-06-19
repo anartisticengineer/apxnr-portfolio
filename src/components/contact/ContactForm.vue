@@ -63,6 +63,7 @@
 import { FormSubmission, InquiryType } from "@/types/contact";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { load } from "recaptcha-v3";
 
 const router = useRouter();
 //form reference
@@ -94,6 +95,18 @@ const handleSubmit = async (e: Event) => {
         inquiryType: inquiryType.value as InquiryType,
         message: formMessage.value,
       };
+
+      const recaptcha = await load(
+        process.env.VUE_APP_RECAPTCHA_SITE_KEY as string
+      );
+
+      const token = await recaptcha.execute("submit");
+
+      console.log(token);
+
+      if (!token) {
+        throw new Error("Recaptcha token not found");
+      }
       // const formRequest = await fetch("/", {
       //   method: "POST",
       //   headers: {
