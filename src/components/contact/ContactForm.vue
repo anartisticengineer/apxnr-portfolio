@@ -105,7 +105,7 @@ const handleSubmit = async (e: Event) => {
       };
       //Get recaptcha roken
       const token = await getRecaptchaToken();
-
+      console.log(token);
       //Verify Token
       const response = await verifyTokenFromServer(token);
       console.log(response);
