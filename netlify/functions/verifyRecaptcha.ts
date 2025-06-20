@@ -1,14 +1,14 @@
-import { Context } from "@netlify/functions";
+import { Handler, HandlerEvent } from "@netlify/functions";
 
-const verifyRecaptcha = async (
-  req: Request,
-  context: Context
-): Promise<Response> => {
-  if (req.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
+const verifyRecaptcha: Handler = async (handlerEvent: HandlerEvent) => {
+  if (handlerEvent.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      body: "Method Not Allowed",
+    };
   }
   try {
-    const { token } = await req.json();
+    const { token } = JSON.parse(handlerEvent.body ?? "{}");
     const secretKey = process.env.VUE_APP_RECAPTCHA_SECRET_KEY as string;
     const response = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`,
@@ -20,9 +20,15 @@ const verifyRecaptcha = async (
         },
       }
     );
-    return response;
+    return {
+      statusCode: 200,
+      body: JSON.stringify(await response.json()),
+    };
   } catch (error: any) {
-    return new Response(error.message, { status: 500 });
+    return {
+      statusCode: 500,
+      body: error.message,
+    };
   }
 };
 

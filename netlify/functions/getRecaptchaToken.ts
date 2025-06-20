@@ -1,8 +1,12 @@
+import { Handler, HandlerContext, HandlerEvent } from "@netlify/functions";
 import { load } from "recaptcha-v3";
 
-const getRecaptchaToken = async (req: Request): Promise<Response> => {
-  if (req.method !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
+const getRecaptchaToken: Handler = async (event: HandlerEvent) => {
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      body: "Method Not Allowed",
+    };
   }
   const recaptcha = await load(
     process.env.VUE_APP_RECAPTCHA_SITE_KEY as string,
@@ -11,7 +15,10 @@ const getRecaptchaToken = async (req: Request): Promise<Response> => {
     }
   );
   const token = await recaptcha.execute("submit");
-  return new Response(JSON.stringify({ token }), { status: 200 });
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ token }),
+  };
 };
 
 export default getRecaptchaToken;
