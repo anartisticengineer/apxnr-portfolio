@@ -11,7 +11,7 @@ const getRecaptchaToken = async (req: Request): Promise<Response> => {
     }
   );
   const token = await recaptcha.execute("submit");
-  return Response.json({ token });
+  return new Response(JSON.stringify({ token }), { status: 200 });
 };
 
 export default getRecaptchaToken;
