@@ -1,11 +1,10 @@
-import { Handler, HandlerEvent } from "@netlify/functions";
+import { HandlerEvent } from "@netlify/functions";
 
-const verifyRecaptcha: Handler = async (handlerEvent: HandlerEvent) => {
+const verifyRecaptcha = async (
+  handlerEvent: HandlerEvent
+): Promise<Response> => {
   if (handlerEvent.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: "Method Not Allowed",
-    };
+    return new Response("Method Not Allowed", { status: 405 });
   }
   try {
     const { token } = JSON.parse(handlerEvent.body ?? "{}");
@@ -20,15 +19,9 @@ const verifyRecaptcha: Handler = async (handlerEvent: HandlerEvent) => {
         },
       }
     );
-    return {
-      statusCode: 200,
-      body: JSON.stringify(await response.json()),
-    };
+    return new Response(JSON.stringify(await response.json()), { status: 200 });
   } catch (error: any) {
-    return {
-      statusCode: 500,
-      body: error.message,
-    };
+    return new Response(error.message, { status: 500 });
   }
 };
 
