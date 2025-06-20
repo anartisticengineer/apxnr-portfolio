@@ -20,7 +20,7 @@ const verifyRecaptcha = async (
         },
       }
     );
-    return response.json();
+    return response;
   } catch (error: any) {
     return new Response(error.message, { status: 500 });
   }
