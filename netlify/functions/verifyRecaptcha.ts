@@ -4,6 +4,9 @@ const verifyRecaptcha = async (
   req: Request,
   context: Context
 ): Promise<Response> => {
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
   try {
     const { token } = await req.json();
     const secretKey = process.env.VUE_APP_RECAPTCHA_SECRET_KEY as string;
@@ -19,8 +22,7 @@ const verifyRecaptcha = async (
     );
     return response.json();
   } catch (error: any) {
-    console.error("ReCaptcha Token Verification Failed:", error);
-    throw error;
+    return new Response(error.message, { status: 500 });
   }
 };
 
