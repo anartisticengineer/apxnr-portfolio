@@ -10,7 +10,7 @@
     <v-text-field
       id="name-field"
       v-model="formName"
-      :rules="nameRules"
+      :rules="formRules.forName"
       label="Name"
       variant="outlined"
       class="py-2"
@@ -20,7 +20,7 @@
     <v-text-field
       id="email-field"
       v-model="formEmail"
-      :rules="emailRules"
+      :rules="formRules.forEmail"
       label="Email"
       type="email"
       variant="outlined"
@@ -32,7 +32,7 @@
       id="inquiry-type-field"
       label="Inquiry Type"
       v-model="inquiryType"
-      :rules="inquiryTypeRules"
+      :rules="formRules.forInquiryType"
       :items="['Commissions', 'Job Opportunities', 'Other/Just saying hi ;)']"
       variant="outlined"
       data-testid="inquiry-type-field"
@@ -40,7 +40,7 @@
     <v-textarea
       id="message-field"
       v-model="formMessage"
-      :rules="messageRules"
+      :rules="formRules.forMessage"
       label="Message"
       variant="outlined"
       class="py-2"
@@ -71,26 +71,21 @@
 import { FormSubmission, InquiryType } from "@/types/contact";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { getRecaptchaToken, verifyTokenFromServer } from "@/utils/contactForm";
+import {
+  getRecaptchaToken,
+  verifyTokenFromServer,
+  FormRules,
+} from "@/utils/contactForm";
 
 const router = useRouter();
 //form reference
 const form = ref();
 //form elements and rules
+const formRules = new FormRules();
 const formName = ref("");
-const nameRules = [(v: string) => !!v || "Name is required"];
 const formEmail = ref("");
-const emailRules = [
-  (v: string) => !!v || "E-mail is required",
-  (v: string) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-];
 const inquiryType = ref("");
-const inquiryTypeRules = [(v: string) => !!v || "Inquiry type is required"];
 const formMessage = ref("");
-const messageRules = [
-  (v: string) => !!v || "Message is required",
-  (v: string) => v.length <= 500 || "Message must be less than 500 characters",
-];
 
 const handleSubmit = async (e: Event) => {
   e.preventDefault();
@@ -108,7 +103,11 @@ const handleSubmit = async (e: Event) => {
       const { token } = await tokenRequest.json();
       //Verify Token
       const response = await verifyTokenFromServer(token);
-      console.log(response.json());
+      const { success } = await response.json();
+
+      if (!success) {
+        throw new Error("Recaptcha verification failed");
+      }
       // const formRequest = await fetch("/", {
       //   method: "POST",
       //   headers: {

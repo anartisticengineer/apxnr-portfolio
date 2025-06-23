@@ -28,4 +28,24 @@ const verifyTokenFromServer = async (token: string): Promise<Response> => {
   return response;
 };
 
-export { verifyTokenFromServer, getRecaptchaToken };
+class FormRules {
+  readonly forName: Array<(v: string) => string | boolean>;
+  readonly forEmail: Array<(v: string) => string | boolean>;
+  readonly forInquiryType: Array<(v: string) => string | boolean>;
+  readonly forMessage: Array<(v: string) => string | boolean>;
+  constructor() {
+    this.forName = [(v: string) => !!v || "Name is required"];
+    this.forEmail = [
+      (v: string) => !!v || "E-mail is required",
+      (v: string) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    ];
+    this.forInquiryType = [(v: string) => !!v || "Inquiry type is required"];
+    this.forMessage = [
+      (v: string) => !!v || "Message is required",
+      (v: string) =>
+        v.length <= 500 || "Message must be less than 500 characters",
+    ];
+  }
+}
+
+export { verifyTokenFromServer, getRecaptchaToken, FormRules };
