@@ -1,5 +1,6 @@
 <template>
   <v-form
+    name="contact-form"
     class="ma-5 w-md-50"
     validate-on="blur"
     @submit="handleSubmit"
@@ -7,6 +8,7 @@
     data-testid="contact-form"
     data-netlify="true"
   >
+    <input type="hidden" name="form-name" value="contact-form" />
     <v-text-field
       id="name-field"
       v-model="formName"
@@ -54,8 +56,14 @@
       type="submit"
       variant="tonal"
       data-testid="submit-button"
+      :disabled="isSubmitting"
       >Submit</v-btn
     >
+    <v-progress-linear
+      indeterminate
+      v-if="isSubmitting"
+      color="accent"
+    ></v-progress-linear>
     <div
       id="recaptcha-container"
       class="text-left text-body-2 text-lg-body-1 ma-5"
@@ -78,6 +86,7 @@ import {
 } from "@/utils/contactForm";
 
 const router = useRouter();
+const isSubmitting = ref(false);
 //form reference
 const form = ref();
 //form elements and rules
@@ -92,33 +101,36 @@ const handleSubmit = async (e: Event) => {
   if (form.value.isValid) {
     //send form
     try {
+      isSubmitting.value = true;
+      //Get recaptcha roken
+      const tokenRequest = await getRecaptchaToken();
+      const { token } = await tokenRequest.json();
+      //Verify Token
+      const recaptchaResponse = await verifyTokenFromServer(token);
+      const { success } = await recaptchaResponse.json();
+
+      if (!success) {
+        throw new Error("Recaptcha verification failed");
+      }
       const formInputs: FormSubmission = {
         name: formName.value,
         email: formEmail.value,
         inquiryType: inquiryType.value as InquiryType,
         message: formMessage.value,
       };
-      //Get recaptcha roken
-      const tokenRequest = await getRecaptchaToken();
-      const { token } = await tokenRequest.json();
-      //Verify Token
-      const response = await verifyTokenFromServer(token);
-      const { success } = await response.json();
 
-      if (!success) {
-        throw new Error("Recaptcha verification failed");
+      const formRequest = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(Object.entries(formInputs)).toString(),
+      });
+
+      if (!formRequest.ok) {
+        throw new Error("Form submission failed: Form request error");
       }
-      // const formRequest = await fetch("/", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded",
-      //   },
-      //   body: new URLSearchParams(formInputs).toString(),
-      // });
-
-      // if (formRequest.ok) {
-      //   console.log("Form submitted successfully");
-      // }
+      //setup for confirmation page
       const uriParams = new URLSearchParams();
       uriParams.append("name", formInputs.name);
       uriParams.append("email", formInputs.email);
@@ -134,6 +146,8 @@ const handleSubmit = async (e: Event) => {
       });
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      isSubmitting.value = false;
     }
   }
 };
@@ -148,5 +162,8 @@ export default {
 <style>
 #message-field-messages .v-counter {
   color: var(--v-theme-secondary);
+}
+#recaptcha-container a {
+  color: var(--v-theme-accent);
 }
 </style>
