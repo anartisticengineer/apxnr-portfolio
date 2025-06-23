@@ -2,12 +2,15 @@
 import { load } from "recaptcha-v3";
 
 const getRecaptchaToken = async (): Promise<Response> => {
-  const recaptcha = await load(
-    process.env.VUE_APP_RECAPTCHA_SITE_KEY as string,
-    {
-      autoHideBadge: true,
-    }
-  );
+  //get site key
+  const response = await fetch("/.netlify/functions/getSiteKey", {
+    method: "POST",
+  });
+  const { siteKey } = await response.json();
+  //load recaptcha
+  const recaptcha = await load(siteKey, {
+    autoHideBadge: true,
+  });
   const token = await recaptcha.execute("submit");
   return new Response(JSON.stringify({ token }), { status: 200 });
 };

@@ -1,7 +1,7 @@
 const verifyRecaptcha = async (request: Request): Promise<Response> => {
   try {
     const { token } = await request.json();
-    const secretKey = process.env.VUE_APP_RECAPTCHA_SECRET_KEY as string;
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY as string;
     const response = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`,
       {
