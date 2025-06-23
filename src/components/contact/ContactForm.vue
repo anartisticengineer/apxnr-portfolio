@@ -71,7 +71,7 @@
 import { FormSubmission, InquiryType } from "@/types/contact";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { verifyTokenFromServer } from "@/utils/contactForm";
+import { getRecaptchaToken, verifyTokenFromServer } from "@/utils/contactForm";
 
 const router = useRouter();
 //form reference
@@ -104,17 +104,11 @@ const handleSubmit = async (e: Event) => {
         message: formMessage.value,
       };
       //Get recaptcha roken
-      const tokenRequest = await fetch(
-        "/.netlify/functions/getRecaptchaToken",
-        {
-          method: "POST",
-        }
-      );
-      const token = await tokenRequest.json();
-      console.log(token);
+      const tokenRequest = await getRecaptchaToken();
+      const { token } = await tokenRequest.json();
       //Verify Token
       const response = await verifyTokenFromServer(token);
-      console.log(response);
+      console.log(response.json());
       // const formRequest = await fetch("/", {
       //   method: "POST",
       //   headers: {

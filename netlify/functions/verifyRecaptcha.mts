@@ -1,13 +1,6 @@
-import { HandlerEvent } from "@netlify/functions";
-
-const verifyRecaptcha = async (
-  handlerEvent: HandlerEvent
-): Promise<Response> => {
-  if (handlerEvent.httpMethod !== "POST") {
-    return new Response("Method Not Allowed", { status: 405 });
-  }
+const verifyRecaptcha = async (request: Request): Promise<Response> => {
   try {
-    const { token } = JSON.parse(handlerEvent.body ?? "{}");
+    const { token } = await request.json();
     const secretKey = process.env.VUE_APP_RECAPTCHA_SECRET_KEY as string;
     const response = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`,
