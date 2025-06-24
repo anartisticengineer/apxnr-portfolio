@@ -1,8 +1,8 @@
 export interface FormSubmission {
-  name: string;
-  email: string;
-  message: string;
-  inquiryType: InquiryType;
+  "name-field": string;
+  "email-field": string;
+  "message-field": string;
+  "inquiry-type-field": InquiryType;
 }
 
 export enum InquiryType {
