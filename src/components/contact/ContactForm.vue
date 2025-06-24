@@ -7,10 +7,12 @@
     ref="form"
     data-testid="contact-form"
     data-netlify="true"
+    netlify-honeypot="bot-field"
   >
     <input type="hidden" name="form-name" value="contact-form" />
     <v-text-field
       id="name-field"
+      name="contact-name"
       v-model="formName"
       :rules="formRules.forName"
       label="Name"
@@ -21,6 +23,7 @@
     ></v-text-field>
     <v-text-field
       id="email-field"
+      name="contact-email"
       v-model="formEmail"
       :rules="formRules.forEmail"
       label="Email"
@@ -32,6 +35,7 @@
     ></v-text-field>
     <v-select
       id="inquiry-type-field"
+      name="contact-inquiry-type"
       label="Inquiry Type"
       v-model="inquiryType"
       :rules="formRules.forInquiryType"
@@ -41,6 +45,7 @@
     ></v-select>
     <v-textarea
       id="message-field"
+      name="contact-message"
       v-model="formMessage"
       :rules="formRules.forMessage"
       label="Message"
@@ -80,9 +85,9 @@ import { FormSubmission, InquiryType } from "@/types/contact";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import {
-  getRecaptchaToken,
-  verifyTokenFromServer,
   FormRules,
+  NetlifyFormSetup,
+  RecaptchaUtils,
 } from "@/utils/contactForm";
 
 const router = useRouter();
@@ -91,27 +96,28 @@ const isSubmitting = ref(false);
 const form = ref();
 //form elements and rules
 const formRules = new FormRules();
+const recaptchaUtils = new RecaptchaUtils();
+const netlifyFormSetup = new NetlifyFormSetup();
 const formName = ref("");
 const formEmail = ref("");
 const inquiryType = ref("");
 const formMessage = ref("");
 
-const handleSubmit = async (e: Event) => {
+const handleSubmit = async (e: Event): Promise<void> => {
   e.preventDefault();
   if (form.value.isValid) {
     //send form
     try {
       isSubmitting.value = true;
-      //Get recaptcha roken
-      const tokenRequest = await getRecaptchaToken();
-      const { token } = await tokenRequest.json();
-      //Verify Token
-      const recaptchaResponse = await verifyTokenFromServer(token);
-      const { success } = await recaptchaResponse.json();
+
+      const verificationResponse = await recaptchaUtils.runTokenVerification();
+
+      const { success } = await verificationResponse.json();
 
       if (!success) {
         throw new Error("Recaptcha verification failed");
       }
+
       const formInputs: FormSubmission = {
         name: formName.value,
         email: formEmail.value,
@@ -119,17 +125,7 @@ const handleSubmit = async (e: Event) => {
         message: formMessage.value,
       };
 
-      const formRequest = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams(Object.entries(formInputs)).toString(),
-      });
-
-      if (!formRequest.ok) {
-        throw new Error("Form submission failed: Form request error");
-      }
+      await netlifyFormSetup.sendToNetlify(formInputs);
       //setup for confirmation page
       const uriParams = new URLSearchParams();
       uriParams.append("name", formInputs.name);
