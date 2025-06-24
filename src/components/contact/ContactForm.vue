@@ -5,9 +5,9 @@
     validate-on="blur"
     @submit="handleSubmit"
     ref="form"
+    method="POST"
     data-testid="contact-form"
     data-netlify="true"
-    netlify-honeypot="bot-field"
   >
     <input type="hidden" name="form-name" value="contact-form" />
     <v-text-field
@@ -35,7 +35,7 @@
     ></v-text-field>
     <v-select
       id="inquiry-type-field"
-      name="contact-inquiry-type"
+      name="inquiry-type-field"
       label="Inquiry Type"
       v-model="inquiryType"
       :rules="formRules.forInquiryType"
@@ -45,7 +45,7 @@
     ></v-select>
     <v-textarea
       id="message-field"
-      name="contact-message"
+      name="message-field"
       v-model="formMessage"
       :rules="formRules.forMessage"
       label="Message"
@@ -119,19 +119,19 @@ const handleSubmit = async (e: Event): Promise<void> => {
       }
 
       const formInputs: FormSubmission = {
-        name: formName.value,
-        email: formEmail.value,
-        inquiryType: inquiryType.value as InquiryType,
-        message: formMessage.value,
+        "name-field": formName.value,
+        "email-field": formEmail.value,
+        "inquiry-type-field": inquiryType.value as InquiryType,
+        "message-field": formMessage.value,
       };
 
       await netlifyFormSetup.sendToNetlify(formInputs);
       //setup for confirmation page
       const uriParams = new URLSearchParams();
-      uriParams.append("name", formInputs.name);
-      uriParams.append("email", formInputs.email);
-      uriParams.append("inquiryType", formInputs.inquiryType);
-      uriParams.append("message", formInputs.message);
+      uriParams.append("name", formInputs["name-field"]);
+      uriParams.append("email", formInputs["email-field"]);
+      uriParams.append("inquiryType", formInputs["inquiry-type-field"]);
+      uriParams.append("message", formInputs["message-field"]);
       const uriParam = uriParams.toString();
 
       await router.push({
