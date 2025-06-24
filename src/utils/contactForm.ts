@@ -52,6 +52,15 @@ class RecaptchaUtils {
 }
 
 class NetlifyFormSetup {
+  private encode = (data: FormSubmission): string => {
+    return Object.entries(data)
+      .map(
+        ([key, value]) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+      )
+      .join("&");
+  };
+
   public sendToNetlify = async (
     submission: FormSubmission
   ): Promise<Response> => {
@@ -61,7 +70,7 @@ class NetlifyFormSetup {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams(Object.entries(submission)).toString(),
+        body: this.encode(submission),
       });
       return formResponse;
     } catch (error: any) {

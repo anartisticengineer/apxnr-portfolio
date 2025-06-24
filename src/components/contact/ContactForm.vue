@@ -5,6 +5,7 @@
     validate-on="blur"
     @submit="handleSubmit"
     ref="form"
+    method="POST"
     data-testid="contact-form"
     data-netlify="true"
     netlify-honeypot="bot-field"
