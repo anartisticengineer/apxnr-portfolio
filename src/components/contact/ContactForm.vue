@@ -1,16 +1,20 @@
 <template>
   <v-form
+    name="contact-form"
     class="ma-5 w-md-50"
     validate-on="blur"
     @submit="handleSubmit"
     ref="form"
     data-testid="contact-form"
     data-netlify="true"
+    netlify-honeypot="bot-field"
   >
+    <input type="hidden" name="form-name" value="contact-form" />
     <v-text-field
       id="name-field"
+      name="contact-name"
       v-model="formName"
-      :rules="nameRules"
+      :rules="formRules.forName"
       label="Name"
       variant="outlined"
       class="py-2"
@@ -19,8 +23,9 @@
     ></v-text-field>
     <v-text-field
       id="email-field"
+      name="contact-email"
       v-model="formEmail"
-      :rules="emailRules"
+      :rules="formRules.forEmail"
       label="Email"
       type="email"
       variant="outlined"
@@ -30,17 +35,19 @@
     ></v-text-field>
     <v-select
       id="inquiry-type-field"
+      name="contact-inquiry-type"
       label="Inquiry Type"
       v-model="inquiryType"
-      :rules="inquiryTypeRules"
+      :rules="formRules.forInquiryType"
       :items="['Commissions', 'Job Opportunities', 'Other/Just saying hi ;)']"
       variant="outlined"
       data-testid="inquiry-type-field"
     ></v-select>
     <v-textarea
       id="message-field"
+      name="contact-message"
       v-model="formMessage"
-      :rules="messageRules"
+      :rules="formRules.forMessage"
       label="Message"
       variant="outlined"
       class="py-2"
@@ -54,8 +61,22 @@
       type="submit"
       variant="tonal"
       data-testid="submit-button"
+      :disabled="isSubmitting"
       >Submit</v-btn
     >
+    <v-progress-linear
+      indeterminate
+      v-if="isSubmitting"
+      color="accent"
+    ></v-progress-linear>
+    <div
+      id="recaptcha-container"
+      class="text-left text-body-2 text-lg-body-1 ma-5"
+    >
+      This site is protected by reCAPTCHA and the Google
+      <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+      <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+    </div>
   </v-form>
 </template>
 
@@ -63,48 +84,49 @@
 import { FormSubmission, InquiryType } from "@/types/contact";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import {
+  FormRules,
+  NetlifyFormSetup,
+  RecaptchaUtils,
+} from "@/utils/contactForm";
 
 const router = useRouter();
+const isSubmitting = ref(false);
 //form reference
 const form = ref();
 //form elements and rules
+const formRules = new FormRules();
+const recaptchaUtils = new RecaptchaUtils();
+const netlifyFormSetup = new NetlifyFormSetup();
 const formName = ref("");
-const nameRules = [(v: string) => !!v || "Name is required"];
 const formEmail = ref("");
-const emailRules = [
-  (v: string) => !!v || "E-mail is required",
-  (v: string) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-];
 const inquiryType = ref("");
-const inquiryTypeRules = [(v: string) => !!v || "Inquiry type is required"];
 const formMessage = ref("");
-const messageRules = [
-  (v: string) => !!v || "Message is required",
-  (v: string) => v.length <= 500 || "Message must be less than 500 characters",
-];
 
-const handleSubmit = async (e: Event) => {
+const handleSubmit = async (e: Event): Promise<void> => {
   e.preventDefault();
   if (form.value.isValid) {
     //send form
     try {
+      isSubmitting.value = true;
+
+      const verificationResponse = await recaptchaUtils.runTokenVerification();
+
+      const { success } = await verificationResponse.json();
+
+      if (!success) {
+        throw new Error("Recaptcha verification failed");
+      }
+
       const formInputs: FormSubmission = {
         name: formName.value,
         email: formEmail.value,
         inquiryType: inquiryType.value as InquiryType,
         message: formMessage.value,
       };
-      // const formRequest = await fetch("/", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded",
-      //   },
-      //   body: new URLSearchParams(formInputs).toString(),
-      // });
 
-      // if (formRequest.ok) {
-      //   console.log("Form submitted successfully");
-      // }
+      await netlifyFormSetup.sendToNetlify(formInputs);
+      //setup for confirmation page
       const uriParams = new URLSearchParams();
       uriParams.append("name", formInputs.name);
       uriParams.append("email", formInputs.email);
@@ -120,6 +142,8 @@ const handleSubmit = async (e: Event) => {
       });
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      isSubmitting.value = false;
     }
   }
 };
@@ -134,5 +158,8 @@ export default {
 <style>
 #message-field-messages .v-counter {
   color: var(--v-theme-secondary);
+}
+#recaptcha-container a {
+  color: var(--v-theme-accent);
 }
 </style>
