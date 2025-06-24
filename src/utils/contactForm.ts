@@ -52,7 +52,7 @@ class RecaptchaUtils {
 }
 
 class NetlifyFormSetup {
-  private encode = (data: FormSubmission): string => {
+  private encode = (data: Object): string => {
     return Object.entries(data)
       .map(
         ([key, value]) =>
@@ -70,7 +70,7 @@ class NetlifyFormSetup {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: this.encode(submission),
+        body: this.encode({ "form-name": "contact-form", ...submission }),
       });
       return formResponse;
     } catch (error: any) {
