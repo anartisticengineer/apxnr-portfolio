@@ -37,7 +37,7 @@ const homeBannerImage: HomeBannerImage = {
 };
 
 const homeCta: CallToAction = {
-  description: homeContent["title"],
+  description: homeContent["call-to-action"]["call-to-action-text"],
   goto: {
     link: homeContent["call-to-action"]["call-to-action-goto-link"],
     text: homeContent["call-to-action"]["call-to-action-btn-text"],
