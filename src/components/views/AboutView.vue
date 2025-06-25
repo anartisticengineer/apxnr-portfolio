@@ -22,7 +22,7 @@
         elevation="2"
       >
         <div
-          class="text-body-2 text-lg-body-1 text-center text-md-left font-weight-light"
+          class="d-flex flex-column text-body-2 text-lg-body-1 text-center text-md-left font-weight-light ga-2 ga-md-5"
           v-html="summary"
         ></div>
       </v-card>
