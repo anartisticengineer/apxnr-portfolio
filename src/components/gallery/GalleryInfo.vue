@@ -6,6 +6,7 @@
         variant="text"
         icon="mdi-information"
         data-testid="gallery-info-button"
+        v-tooltip="'More Info'"
       ></v-btn>
     </template>
     <template v-slot:default="{ isActive }">
