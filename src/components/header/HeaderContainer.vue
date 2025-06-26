@@ -29,13 +29,14 @@
 import { onMounted, Ref, ref, watch } from "vue";
 import commissionsGallery from "../../content/gallery/commissioned-artworks_2025-05-27.json";
 import glitchFXGenerators from "../../content/gallery/glitch-fx-generators_2025-05-28.json";
+import affinityGallery from "../../content/gallery/affinity-artworks-2025_2025-06-26.json";
 
 const mobileLinksOpen = ref(false);
 const route = useRoute();
 const projectLinks: Ref<{}[]> = ref([]);
 
 onMounted(() => {
-  const links = [commissionsGallery, glitchFXGenerators].map(
+  const links = [commissionsGallery, glitchFXGenerators, affinityGallery].map(
     ({ title, identifier }) => {
       return { title, identifier };
     }
