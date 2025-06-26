@@ -6,14 +6,21 @@
     cover
     transition="fade-transition"
     elevation="10"
+    :oncontextmenu="disableRightClick"
   >
     <template v-slot:placeholder>
-      <v-row class="fill-height ma-0">
-        <v-skeleton-loader color="background" type="image"></v-skeleton-loader>
-      </v-row>
+      <v-skeleton-loader color="primary" type="image"></v-skeleton-loader>
     </template>
   </v-img>
 </template>
+
+<script setup lang="ts">
+const disableRightClick = (event: any) => {
+  if (event.button === 2) {
+    return false;
+  }
+};
+</script>
 
 <script lang="ts">
 export default {
