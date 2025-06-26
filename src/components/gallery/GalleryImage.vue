@@ -4,6 +4,7 @@
     :src="src"
     :alt="alt"
     cover
+    draggable="false"
     transition="fade-transition"
     elevation="10"
     :oncontextmenu="disableRightClick"
