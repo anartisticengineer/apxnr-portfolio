@@ -11,6 +11,7 @@
         data-testid="project-sub-links-toggle"
         variant="text"
         class="pl-0 text-none text-subtitle-1"
+        rounded="0"
       >
         <!-- project sub links toggle text -->
         <span>Projects</span>

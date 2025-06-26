@@ -27,12 +27,13 @@ import { useDisplay } from "vuetify/lib/framework.mjs";
 
 import commissionsGallery from "../../content/gallery/commissioned-artworks_2025-05-27.json";
 import glitchFxGallery from "../../content/gallery/glitch-fx-generators_2025-05-28.json";
+import affinityGallery from "../../content/gallery/affinity-artworks-2025_2025-06-26.json";
 //setup gallery content
 const route = useRoute();
 const router = useRouter();
 const id = ref(route.params.id);
 
-const allGalleries = [commissionsGallery, glitchFxGallery];
+const allGalleries = [commissionsGallery, glitchFxGallery, affinityGallery];
 
 const galleryContent: Ref<GalleryContent> = ref(new EmptyGalleryContent());
 
