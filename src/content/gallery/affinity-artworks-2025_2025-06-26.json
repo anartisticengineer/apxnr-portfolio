@@ -1,0 +1,59 @@
+{
+  "identifier": "artworks-2025",
+  "title": "Affinity Artworks 2025",
+  "description": "Miscellaneous artworks I did in 2025 via Affinity Photo 2. Implemented Audacity and a hex editor for glitch effects. Works can be viewed on my Instagram and Bluesky pages!",
+  "images": [
+    {
+      "image": "/images/uploads/CRUELTY.webp",
+      "alt-text": "Cruelty"
+    },
+    {
+      "image": "/images/uploads/AVALANCHE.webp",
+      "alt-text": "Avalanche"
+    },
+    {
+      "image": "/images/uploads/DISASTERCLASS.webp",
+      "alt-text": "Disaster Class"
+    },
+    {
+      "image": "/images/uploads/DREAM_SEQUENCE.webp",
+      "alt-text": "Dream Sequence"
+    },
+    {
+      "image": "/images/uploads/FREEFALL.webp",
+      "alt-text": "Freefall"
+    },
+    {
+      "image": "/images/uploads/IN_HIDING.webp",
+      "alt-text": "In Hiding"
+    },
+    {
+      "image": "/images/uploads/MOUNTAIN.webp",
+      "alt-text": "Mountain"
+    },
+    {
+      "image": "/images/uploads/NEVER_ENDING.webp",
+      "alt-text": "Never Ending"
+    },
+    {
+      "image": "/images/uploads/NEW_FEELING.webp",
+      "alt-text": "New Feeling"
+    },
+    {
+      "image": "/images/uploads/PARADISE.webp",
+      "alt-text": "Paradise"
+    },
+    {
+      "image": "/images/uploads/RAGE_ON.webp",
+      "alt-text": "Rage on"
+    },
+    {
+      "image": "/images/uploads/THE_MIST.webp",
+      "alt-text": "The mist"
+    },
+    {
+      "image": "/images/uploads/UPSTREAM.webp",
+      "alt-text": "Upstream"
+    }
+  ]
+}
