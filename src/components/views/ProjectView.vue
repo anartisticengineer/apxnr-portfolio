@@ -8,7 +8,7 @@
       </h1>
       <gallery-info :gallery-content="galleryContent"></gallery-info>
     </div>
-    <v-divider color="accent"></v-divider>
+    <v-divider />
     <div class="ma-5 text-subtitle-1">
       Click the info button for more details ^
     </div>
