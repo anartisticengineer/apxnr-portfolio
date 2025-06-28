@@ -5,7 +5,7 @@
     </v-row>
     <v-row class="ma-5">
       <h2 class="text-left text-md-center w-100" color="secondary-darken-1">
-        Thanks for the message {{ submittedItemsRef.name }}
+        Thanks for the message {{ submittedItemsRef["name-field"] }}
       </h2>
     </v-row>
     <v-divider class="ma-5"></v-divider>
@@ -26,22 +26,22 @@
         <v-card-text>
           <div class="text-left text-h6 pa-2">Name</div>
           <div class="text-left text-subtitle-2 pa-2">
-            {{ submittedItemsRef.name }}
+            {{ submittedItemsRef["name-field"] }}
           </div>
           <v-divider class="my-2" color="accent"></v-divider>
           <div class="text-left text-h6 pa-2">Email</div>
           <div class="text-left text-subtitle-2 pa-2">
-            {{ submittedItemsRef.email }}
+            {{ submittedItemsRef["email-field"] }}
           </div>
           <v-divider class="my-2" color="accent"></v-divider>
           <div class="text-left text-h6 pa-2">Inquiry Type</div>
           <div class="text-left text-subtitle-2 pa-2">
-            {{ submittedItemsRef.inquiryType }}
+            {{ submittedItemsRef["inquiry-type-field"] }}
           </div>
           <v-divider class="my-2" color="accent"></v-divider>
           <div class="text-left text-h6 pa-2">Message</div>
           <div class="text-left text-subtitle-2 pa-2">
-            {{ submittedItemsRef.message }}
+            {{ submittedItemsRef["message-field"] }}
           </div>
         </v-card-text>
         <v-card-actions>
@@ -70,19 +70,19 @@ const router = useRouter();
 const { uri } = route.query;
 
 const submittedItemsRef: Ref<FormSubmission> = ref({
-  name: "",
-  email: "",
-  message: "",
-  inquiryType: InquiryType.Commission,
+  "name-field": "",
+  "email-field": "",
+  "message-field": "",
+  "inquiry-type-field": InquiryType.Commission,
 });
 
 try {
   const uriParams = new URLSearchParams(uri as string);
   const submission: FormSubmission = {
-    name: uriParams.get("name") as string,
-    email: uriParams.get("email") as string,
-    message: uriParams.get("message") as string,
-    inquiryType: uriParams.get("inquiryType") as InquiryType,
+    "name-field": uriParams.get("name") as string,
+    "email-field": uriParams.get("email") as string,
+    "message-field": uriParams.get("message") as string,
+    "inquiry-type-field": uriParams.get("inquiryType") as InquiryType,
   };
   submittedItemsRef.value = submission;
 } catch {
