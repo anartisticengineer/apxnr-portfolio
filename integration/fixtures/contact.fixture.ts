@@ -10,5 +10,6 @@ export const test = base.extend<ContactFixtures>({
     const contactPage = new ContactPage(page);
     await contactPage.goto("/contact");
     await use(contactPage);
+    await contactPage.closePage();
   },
 });

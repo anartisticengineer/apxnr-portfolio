@@ -13,6 +13,10 @@ export default class BasePage {
     await this.page.goto(url);
   }
 
+  async closePage() {
+    await this.page.close();
+  }
+
   getUrl() {
     return this.page.url();
   }

@@ -10,5 +10,6 @@ export const test = base.extend<NotFoundFixtures>({
     const notFoundPage = new NotFoundPage(page);
     await notFoundPage.goto("404");
     await use(notFoundPage);
+    await notFoundPage.closePage();
   },
 });

@@ -17,8 +17,9 @@ export default class Header {
   constructor(page: Page) {
     this.page = page;
     this.headerContainer = this.page.getByTestId("header");
-    this.mobileMenuButton =
-      this.headerContainer.getByTestId("mobile-menu-button");
+    this.mobileMenuButton = this.headerContainer
+      .getByTestId("mobile-menu-button")
+      .filter({ visible: true });
     this.desktopHeaderLinks = this.headerContainer.getByTestId(
       "desktop-header-links"
     );
@@ -43,9 +44,9 @@ export default class Header {
     this.mobileContactLink = this.page
       .getByTestId("mobile-contact-link")
       .filter({ visible: true });
-    this.mobileProjectToggle = this.page
-      .getByTestId("mobile-project-toggle")
-      .filter({ visible: true });
+    this.mobileProjectToggle = this.page.getByTestId(
+      "project-sub-links-toggle"
+    );
     this.projectSubLinks = this.page.getByTestId("project-sub-links");
   }
 
@@ -82,6 +83,16 @@ export default class Header {
   }
 
   async toggleProjectLinks() {
+    if (await this.isMobile()) {
+      await this.openMobileMenu();
+    }
     await this.subLinksToggle.click();
+  }
+
+  async goToRandomProject() {
+    await this.toggleProjectLinks();
+    const projects = await this.projectSubLinks.all();
+    const index = Math.floor(Math.random() * projects.length);
+    await projects[index].click();
   }
 }

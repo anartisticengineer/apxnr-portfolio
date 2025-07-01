@@ -6,9 +6,10 @@ type HomeFixtures = {
 };
 
 export const test = base.extend<HomeFixtures>({
-  homePage: async ({ page }, use) => {
+  homePage: async ({ page }, use, testInfo) => {
     const homePage = new HomePage(page);
     await homePage.goto("/");
     await use(homePage);
+    await homePage.closePage();
   },
 });
