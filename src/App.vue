@@ -16,11 +16,26 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Manrope, Arial, sans-serif;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app h1,
+#app h2,
+#app h3,
+#app h4,
+#app h5,
+#app h6 {
+  font-family: "Noto Serif", serif;
+  font-weight: 300;
+}
+#app p,
+#app span,
+#app div {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
 }
 </style>
