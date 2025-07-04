@@ -21,9 +21,9 @@
     <!-- mobile header links -->
     <v-list
       id="mobile-header-links"
-      class="d-flex d-md-none flex-column w-100"
+      class="d-flex d-md-none flex-column w-100 pa-10"
       data-testid="mobile-header-links"
-      bg-color="background-lighten-1"
+      bg-color="primary-darken-1"
     >
       <v-list-item
         v-for="link in linkNames"

@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1 class="text-left text-md-center w-100 ma-5">Whoops ;P</h1>
-    <v-divider color="accent"></v-divider>
+    <v-divider />
     <section
       class="d-flex flex-column flex-md-row justify-md-space-evenly ma-5"
     >

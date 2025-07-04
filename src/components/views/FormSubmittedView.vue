@@ -8,7 +8,7 @@
         Thanks for the message {{ submittedItemsRef["name-field"] }}
       </h2>
     </v-row>
-    <v-divider class="ma-5"></v-divider>
+    <v-divider class="ma-5" color="secondary-darken-1"></v-divider>
     <v-row
       class="d-flex flex-column flex-md-row justify-center align-center pa-5 w-100"
     >
@@ -22,23 +22,23 @@
           Lookout for a response from my email: cyberartbyjustin@gmail.com
         </p>
         <h3 class="text-left text-md-center w-100 pa-2">Message Details</h3>
-        <v-divider class="ma-5" color="accent"></v-divider>
+        <v-divider class="ma-5" />
         <v-card-text>
           <div class="text-left text-h6 pa-2">Name</div>
           <div class="text-left text-subtitle-2 pa-2">
             {{ submittedItemsRef["name-field"] }}
           </div>
-          <v-divider class="my-2" color="accent"></v-divider>
+          <v-divider class="my-2" />
           <div class="text-left text-h6 pa-2">Email</div>
           <div class="text-left text-subtitle-2 pa-2">
             {{ submittedItemsRef["email-field"] }}
           </div>
-          <v-divider class="my-2" color="accent"></v-divider>
+          <v-divider class="my-2" />
           <div class="text-left text-h6 pa-2">Inquiry Type</div>
           <div class="text-left text-subtitle-2 pa-2">
             {{ submittedItemsRef["inquiry-type-field"] }}
           </div>
-          <v-divider class="my-2" color="accent"></v-divider>
+          <v-divider class="my-2" />
           <div class="text-left text-h6 pa-2">Message</div>
           <div class="text-left text-subtitle-2 pa-2">
             {{ submittedItemsRef["message-field"] }}
