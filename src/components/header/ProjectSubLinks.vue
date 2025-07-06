@@ -1,16 +1,16 @@
 <template>
   <v-list
-    class="d-flex flex-column flex-md-row h-screen"
+    class="d-flex flex-column flex-md-row h-screen h-md-auto"
     variant="text"
     bg-color="background"
   >
     <!-- project sub links toggle -->
-    <v-list-item>
+    <v-list-item class="px-10 pa-md-0">
       <v-btn
         @click="subLinksOpen = !subLinksOpen"
         data-testid="project-sub-links-toggle"
         variant="text"
-        class="pl-0 text-none text-subtitle-1"
+        class="text-none text-subtitle-1 font-weight-regular"
         rounded="0"
       >
         <!-- project sub links toggle text -->
@@ -42,6 +42,7 @@
         :key="index"
         link
         :to="`/project/${subLink.identifier}`"
+        class="px-10 py-5 pa-md-5"
       >
         <span>{{ subLink.title }}</span>
       </v-list-item>

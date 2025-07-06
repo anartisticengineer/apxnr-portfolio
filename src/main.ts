@@ -23,6 +23,11 @@ import FormSubmittedView from "./components/views/FormSubmittedView.vue";
 const vuetify = createVuetify({
   components,
   directives,
+  defaults: {
+    VDivider: {
+      color: "accent",
+    },
+  },
   icons: {
     defaultSet: "mdi",
     aliases,

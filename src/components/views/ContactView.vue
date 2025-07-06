@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1 class="text-left text-md-center w-100 ma-5">Contact</h1>
-    <v-divider color="accent" />
+    <v-divider />
     <div class="d-flex flex-column flex-md-row ma-5">
       <contact-form />
       <aside

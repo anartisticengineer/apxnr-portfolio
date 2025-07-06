@@ -47,6 +47,9 @@ export default {
 </script>
 
 <style>
+#description-container {
+  font-family: Manrope, Arial, Helvetica, sans-serif;
+}
 #description-container a {
   color: #279af1;
 }

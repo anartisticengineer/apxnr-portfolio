@@ -23,7 +23,7 @@
       </v-card>
       <!-- mobile menu button -->
       <v-btn
-        class="d-block d-md-none"
+        class="d-block d-md-none pr-0"
         @click="$emit('toggle-mobile-menu')"
         data-testid="mobile-menu-button"
         ><v-icon icon="mdi-menu"></v-icon
